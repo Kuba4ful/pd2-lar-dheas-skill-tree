@@ -1,0 +1,17 @@
+{
+    "predator_skilltree" : "Lar-Dheas",
+    "predator_skilltree_desc":"S e seo craobh an lar dheas de sgilean agus chomasan",
+    "predator_mentalist_tree":"Police",
+    "menu_lmg_accuracy_boost_desc":"BASIC: ##$basic##\nPlaceholder basic ##DZIUGAS##\n\nACED: ##$pro##\nPlaceholder aced ##AAAA POMOCY##",
+    "menu_lmg_accuracy_boost":"Skill name"
+    "menu_predator_odznaka_desc":"BASIC: ##$basic##\nYou have a police badge on display. \nYou are ##10%## less likely to be targeted. When your health is below ##50%## this bonus gets doubled and you also gain ##2%## dodge chance.\n\nACED: ##$pro##\nYour badge is one of a higher ranking officer Denis. All of these bonuses get doubled.",
+    "menu_predator_odznaka":"Badge"
+    "menu_predator_skora_desc":"BASIC: ##$basic##\nYou were born with thick skin... \nWhen your armor is broken you receive ##25%## less damage. \nIf you have any skill/perk that replaces armor with health, this bonus gets reduced to ##15%##.\n\nACED: ##$pro##\n...and you will die with thick skin. \nWhen you're downed you always retain your ability to shoot, unless you get downed by a cloaker. \n(aced doesn't work yet)",
+    "menu_predator_skora":"Thick Skin"
+    "menu_predator_convert_desc":"BASIC: ##$basic##\nCo to kurwa za wojsko, jak Ty stoisz?! \nYou can convert ##1## more cop to your side. (doesnt work because diesel, will fix later) \nYour converts have ##200%## less health, but deal ##300%## more damage.\n\nACED: ##$pro##\nMiej serce i patrzaj w serce. ) \nYour converts have ##300%## less health, but deal ##400%## more damage. \nConverting a cop gives you ##50%## damage reduction and ##20%## movement speed for ##6## seconds. \nConverts become immune to friendly fire.",
+    "menu_predator_convert":"Discipline"
+    "menu_predator_vincent_desc":"BASIC: ##$basic##\nEverybody knows him, but no one knows who he is. \nYou gain ##2## more concealment. \nMax dodge from Sneaky Bastard increases by ##3%##.\n\nACED: ##$pro##\nYou gain ##4## more concealment. \nMax dodge from Sneaky Bastard increases by ##5%##.",
+    "menu_predator_vincent":"???"
+    "menu_predator_miracle_desc":"BASIC: ##$basic##\nPluszowy krolik Seppuku \nPicking up ammo boxes has regenerates ##1%## HP. \n\nACED: ##$pro##\nEnemies have ##50%## chance to drop one more ammo box. \nEvery third ammo box you pick up regenerates ##2%## HP.\nBonus stacks with Scavenger.",
+    "menu_predator_miracle":"Mongolian Miracle"
+}

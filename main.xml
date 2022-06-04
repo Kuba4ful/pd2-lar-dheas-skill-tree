@@ -1,0 +1,36 @@
+<table name="predator_reborn_skilltree_tutorial">
+<!-- Table name = id for the pack -->
+
+    <!--
+
+    <AssetUpdates id="17206" name="asset_updates" folder_name="template_adding_weapons" provider="lastbullet"/>
+    
+    Adds auto update to your mod
+    id = the last bullet mod ID, example below:
+        http://downloads.lastbullet.net/17206 = id 17206
+    name = asset_updates (do not change this)
+    folder_name = the name of your mod folder, try to keep it simple, lower case, no spaces / special characters
+    provider = where the update comes from, no need to change
+    -->
+
+
+    <Localization directory="Localization" default="english.txt">
+    </Localization>
+    <!-- No need to change localization stuff, unless you wish to add other languages -->
+
+
+    <GlobalValue id="skilltree_tutorial" color="Color(1, 0.5, 0)"/>
+    <!--
+    globalvalue id = id for the entire pack
+    color = The color of the "This is an X item!" text
+	
+	
+        Here you will add the hook of your lua files
+        There are 2 important files skilltree.lua and upgradestweakdata
+        skilltree.lua contains the skill tree
+        upgradestweakdata.lua contains the datas of the skill that you will create
+    <Hooks directory="Hooks">
+        <hook file="skilltree.lua" source_file="lib/tweak_data/skilltreetweakdata"/>
+        <hook file="upgradestweakdata.lua" source_file="lib/tweak_data/upgradestweakdata"/>
+    </Hooks>-->
+</table>

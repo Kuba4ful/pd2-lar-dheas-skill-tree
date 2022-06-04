@@ -1,0 +1,24 @@
+{
+    "name": "Un Pecado Skill Tree",
+    "description": "seks cekc",
+    "author": "Developed by NastaRego",
+    "contact": "twitch.tv/melod_ja",
+    "version": "2.1.3.7",
+    "blt_version": 2,
+    "supermod_definition" : "main.xml",
+    "color": "0.3 0 1",
+	"hooks" : [
+	{ "hook_id" : "lib/tweak_data/skilltreetweakdata",
+		"script_path" : "Hooks/skilltree.lua"
+	},
+	{ "hook_id" : "lib/tweak_data/upgradestweakdata",
+		"script_path" : "Hooks/upgradestweakdata.lua"
+	},
+	{ "hook_id" : "lib/units/pickups/ammoclip",
+		"script_path" : "Hooks/ammoclip.lua"
+	},
+	{ "hook_id" : "lib/managers/playermanager",
+		"script_path" : "Hooks/playermanager.lua"
+	}
+	]
+}
