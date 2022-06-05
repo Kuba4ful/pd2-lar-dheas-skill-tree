@@ -27,7 +27,9 @@ function PlayerManager:check_skills()
 	end
 end
 
-local dataDenis = PlayerManager.chk_minion_limit_reached
+local dataDenis = PlayerManager.chk_minion_limit_reached  --incompatible with other mods 
+														  --as it doesn't call the function back
+														  --add in todo on github
 function PlayerManager:chk_minion_limit_reached()
 	local minions = self:upgrade_value("player", "convert_enemies_max_minions", 0) + self:upgrade_value("player", "denis_max_minions", 0)
 	return minions <= self._local_player_minions
