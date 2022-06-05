@@ -130,7 +130,7 @@ function SkillTreeTweakData:init(tweak_data)
 			upgrades = {
 				"player_passive_convert_enemies_health_multiplierr_1",
 				"player_passive_convert_enemies_damage_multiplierr_1",
-				"player_convert_enemies_max_minionss_1"
+				"player_denis_max_minions"
 			},
 			cost = self.costs.default
 		},
@@ -138,7 +138,7 @@ function SkillTreeTweakData:init(tweak_data)
 			upgrades = {
 				"player_passive_convert_enemies_health_multiplierr_2",
 				"player_passive_convert_enemies_damage_multiplierr_2",
-				"player_convert_enemies_max_minionss_1"
+				"player_denis_on_convert_bonus_1"
 			},
 			cost = self.costs.pro
 		}

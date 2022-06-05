@@ -26,3 +26,9 @@ function PlayerManager:check_skills()
 		self._message_system:unregister(Message.OnEnemyKilled, "miracle_double_ammo_drop")
 	end
 end
+
+local dataDenis = PlayerManager.chk_minion_limit_reached
+function PlayerManager:chk_minion_limit_reached()
+	local minions = self:upgrade_value("player", "convert_enemies_max_minions", 0) + self:upgrade_value("player", "denis_max_minions", 0)
+	return minions <= self._local_player_minions
+end

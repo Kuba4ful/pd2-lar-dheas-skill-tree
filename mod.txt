@@ -17,6 +17,9 @@
 	{ "hook_id" : "lib/units/pickups/ammoclip",
 		"script_path" : "Hooks/ammoclip.lua"
 	},
+	{ "hook_id" : "lib/managers/group_ai_states/groupaistatebase",
+		"script_path" : "Hooks/groupaistatebase.lua"
+	},
 	{ "hook_id" : "lib/managers/playermanager",
 		"script_path" : "Hooks/playermanager.lua"
 	}

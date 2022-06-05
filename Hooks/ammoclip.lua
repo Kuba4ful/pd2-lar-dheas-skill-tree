@@ -21,7 +21,7 @@ function AmmoClip:_pickup(unit)
 				elseif healed == 2 then
 					log(tostring(healed))
 					healed = healed - 2
-					restore_value = math.random(values[1], values[2] + 1)
+					restore_value = math.random(values[1] + 1, values[2] + 2)
 				else
 					log('invalid operation lmao')
 				end

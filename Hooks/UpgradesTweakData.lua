@@ -22,11 +22,13 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.passive_health_index_addend = {116}
 		
 		self.values.player.convert_enemies_max_minions = {2, 2}
+		self.values.player.denis_max_minions = {1}
+		self.values.player.denis_on_convert_bonus = {{0.5, 1.3, 6}, {0.5, 1.3, 6}} --damage reduction, movement speed, time
 		self.values.player.passive_convert_enemies_health_multiplier = {0.02, 0.04}
-		self.values.player.passive_convert_enemies_damage_multiplier = {3.3, 4.3}
+		self.values.player.passive_convert_enemies_damage_multiplier = {3.5, 4.5}
 		
-		self.values.player.passive_concealment_modifier = {2, 4}
-		self.values.player.vincent_add_dodge = {0.03, 0.05}
+		self.values.player.passive_concealment_modifier = {3, 5}
+		self.values.player.vincent_add_dodge = {0.04, 0.06}
 
 		self.values.player.regain_health_from_ammo = {{1,1}, {1,1}}
 		self.values.player.miracle_double_drop = {2}
@@ -60,28 +62,6 @@ function UpgradesTweakData:init(tweak_data)
 			category = "lmg", -- Like before is the weaponkind
 			upgrade = "spread_index_addend",-- spread_index_addend Is where we apply our value in this case on the accuracy
 			value = 2 -- Value is with value you will take in this case the second "4"
-		}
-	}
-	self.definitions.player_convert_enemies_max_minionss_1 = {
-		incremental = true,
-		name_id = "menu_player_convert_enemies_max_minions",
-		category = "feature",
-		upgrade = {
-			value = 1,
-			upgrade = "convert_enemies_max_minions",
-			synced = true,
-			category = "player"
-		}
-	}
-	self.definitions.player_convert_enemies_max_minionss_2 = {
-		incremental = true,
-		name_id = "menu_player_convert_enemies_max_minions",
-		category = "feature",
-		upgrade = {
-			value = 2,
-			upgrade = "convert_enemies_max_minions",
-			synced = true,
-			category = "player"
 		}
 	}
 	self.definitions.player_camouflage_bonus_1 = {
@@ -150,6 +130,36 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 1,
 			upgrade = "bleed_out_health_addend",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_max_minions = {
+		name_id = "menu_player_denis_max_minions",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "denis_max_minions",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_on_convert_bonus_1 = {
+		name_id = "menu_player_denis_on_convert_bonus",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "denis_on_convert_bonus",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_on_convert_bonus_2 = {
+		name_id = "menu_player_denis_on_convert_bonus",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "denis_on_convert_bonus",
 			synced = true,
 			category = "player"
 		}
