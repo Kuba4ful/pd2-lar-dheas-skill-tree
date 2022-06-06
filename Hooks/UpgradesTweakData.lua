@@ -23,7 +23,7 @@ function UpgradesTweakData:init(tweak_data)
 		
 		self.values.player.convert_enemies_max_minions = {2, 2}
 		self.values.player.denis_max_minions = {1}
-		self.values.player.denis_on_convert_bonus = {{0.5, 1.3, 6}, {0.5, 1.3, 6}} --damage reduction, movement speed, time
+		self.values.player.denis_on_convert_bonus = {{0.5, 2.3, 6}, {0.5, 2.3, 6}} --damage reduction, movement speed, time
 		self.values.player.passive_convert_enemies_health_multiplier = {0.02, 0.04}
 		self.values.player.passive_convert_enemies_damage_multiplier = {3.5, 4.5}
 		

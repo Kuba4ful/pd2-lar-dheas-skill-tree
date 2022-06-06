@@ -27,10 +27,27 @@ function PlayerManager:check_skills()
 	end
 end
 
-local dataDenis = PlayerManager.chk_minion_limit_reached  --incompatible with other mods 
+--local dataDenis = PlayerManager.chk_minion_limit_reached  --incompatible with other mods 
 														  --as it doesn't call the function back
 														  --add in todo on github
-function PlayerManager:chk_minion_limit_reached()
-	local minions = self:upgrade_value("player", "convert_enemies_max_minions", 0) + self:upgrade_value("player", "denis_max_minions", 0)
-	return minions <= self._local_player_minions
-end
+--local local_player_minions = PlayerManager
+-- function PlayerManager:chk_minion_limit_reached(peer_unit)
+	-- -- local minions = 0
+	-- -- if self:upgrade_value("player", "denis_max_minions", 0) == not nil then
+		-- -- minions = self:upgrade_value("player", "convert_enemies_max_minions", 0) + self:upgrade_value("player", "denis_max_minions", 0)
+	-- -- else 
+		-- -- minions = self:upgrade_value("player", "convert_enemies_max_minions", 0)
+	-- -- end
+	-- -- return minions <= self._local_player_minions
+	-- local minions = 0
+	-- if peer_unit then
+		-- log('is peer')
+		-- minions = peer_unit:base():upgrade_value("player", "convert_enemies_max_minions") or 0 + peer_unit:base():upgrade_value("player", "denis_max_minions") or 0
+		-- log('minions = ' .. tostring(minions))
+	-- else
+		-- log('is not peer')
+		-- minions = self:upgrade_value("player", "convert_enemies_max_minions", 0) + self:upgrade_value("player", "denis_max_minions", 0)
+		-- log('minions = ' .. tostring(minions))
+	-- end
+	-- return minions <= self._local_player_minions
+-- end
