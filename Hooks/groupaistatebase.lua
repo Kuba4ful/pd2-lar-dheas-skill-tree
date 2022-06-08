@@ -14,6 +14,7 @@ function GroupAIStateBase:convert_hostage_to_criminal(unit, peer_unit, ...)
 		log('[' .. tostring(bonuses[1]) .. tostring(bonuses[2]))
 		owner_base:activate_temporary_property("revived_damage_reduction", bonuses[3], bonuses[1]) --duration is first, value is second
 		owner_base:activate_temporary_property("team_damage_speed_multiplier_received", bonuses[3], bonuses[2]) --duration is first, value is second
+		log('activated effect for' .. tostring(owner_base))
 	end
 	--local bonuses = 0
 	-- log('gets to bonuses')
