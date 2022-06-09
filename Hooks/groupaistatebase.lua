@@ -3,11 +3,11 @@ local Net = _G.LuaNetworking
 
 function GroupAIStateBase:convert_hostage_to_criminal(unit, peer_unit, ...)
 	data(self, unit, peer_unit, ...)
+	if Net:IsHost() or Net:IsMultiplayer() == nil then
 		log('converts')
-	if unit:brain()._logic_data.is_converted then
+		if unit:brain()._logic_data and unit:brain()._logic_data.is_converted then
 		log('is converted')
-		if Net:IsHost() or Net:IsMultiplayer() == nil then
-		Net:SendToPeers( "denis_on_convert_bonus", "true" )
+			Net:SendToPeers( "denis_on_convert_bonus", "true" )
 		-- local peer_id = peer_unit and managers.network:session():peer_by_unit(peer_unit):id() or managers.network:session():local_peer():id()
 		-- local owner_base = peer_id and peer_id ~= managers.network:session():local_peer():id() and peer_unit:base() or managers.player
 		-- log('peer_id ' .. tostring(peer_id))
