@@ -28,7 +28,8 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.passive_convert_enemies_damage_multiplier = {3.5, 4.5}
 		
 		self.values.player.passive_concealment_modifier = {3, 5}
-		self.values.player.vincent_add_dodge = {0.04, 0.06}
+		self.values.player.vincent_add_dodge = {0.02, 0.04}
+		self.values.player.vincent_detection_dodge = {{0.03,10}, {0.06,10}}
 
 		self.values.player.regain_health_from_ammo = {{1,1}, {1,1}}
 		self.values.player.miracle_double_drop = {2}
@@ -242,6 +243,26 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "vincent_add_dodge",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_vincent_detection_dodge_1 = {
+		name_id = "menu_player_vincent_detection_dodge",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "vincent_detection_dodge",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_vincent_detection_dodge_2 = {
+		name_id = "menu_player_vincent_detection_dodge",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "vincent_detection_dodge",
 			synced = true,
 			category = "player"
 		}

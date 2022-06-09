@@ -150,14 +150,16 @@ function SkillTreeTweakData:init(tweak_data)
 		[1] = {
 			upgrades = {
 				"player_passive_suspicion_bonuss_1",
-				"player_vincent_add_dodge_1"
+				"player_vincent_add_dodge_1",
+				"player_vincent_detection_dodge_1"
 			},
 			cost = self.costs.hightier
 		},
 		[2] = {
 			upgrades = {
 				"player_passive_suspicion_bonuss_2",
-				"player_vincent_add_dodge_2"
+				"player_vincent_add_dodge_2",
+				"player_vincent_detection_dodge_2"
 			},
 			cost = self.costs.hightierpro
 		}

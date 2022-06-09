@@ -10,7 +10,7 @@
     "menu_predator_skora":"Thick Skin"
     "menu_predator_convert_desc":"BASIC: ##$basic##\nCo to kurwa za wojsko, jak Ty stoisz?! \nYou can convert ##1## more cop to your side. (doesnt work because diesel, will fix later) \nYour converts have ##200%## less health, but deal ##300%## more damage.\n\nACED: ##$pro##\nMiej serce i patrzaj w serce. ) \nYour converts have ##300%## less health, but deal ##400%## more damage. \nConverting a cop gives you ##50%## damage reduction and ##20%## movement speed for ##6## seconds. \nConverts become immune to friendly fire.",
     "menu_predator_convert":"Discipline"
-    "menu_predator_vincent_desc":"BASIC: ##$basic##\nEverybody knows him, but no one knows who he is. \nYou gain ##2## more concealment. \nMax dodge from Sneaky Bastard increases by ##3%##.\n\nACED: ##$pro##\nYou gain ##4## more concealment. \nMax dodge from Sneaky Bastard increases by ##5%##.",
+    "menu_predator_vincent_desc":"BASIC: ##$basic##\nEverybody knows him, but no one knows who he is. \nYou gain ##3## more concealment. \nMax dodge from Sneaky Bastard increases by ##2%##.\nIf you have ##10## detection risk or less, your dodge chance gets increased by ##3%##.\n\nACED: ##$pro##\nYou gain ##5## more concealment. \nMax dodge from Sneaky Bastard increases by ##4%##.\nIf you have ##10## detection risk or less, your dodge chance gets increased by ##6%##.",
     "menu_predator_vincent":"???"
     "menu_predator_miracle_desc":"BASIC: ##$basic##\nPluszowy krolik Seppuku \nPicking up ammo boxes regenerates ##1%## HP. \n\nACED: ##$pro##\nEnemies have ##50%## chance to drop one more ammo box. \nEvery third ammo box you pick up regenerates ##2%## HP.\nBonus stacks with Scavenger.",
     "menu_predator_miracle":"Mongolian Miracle"
