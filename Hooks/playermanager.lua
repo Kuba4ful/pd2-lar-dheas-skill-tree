@@ -4,15 +4,14 @@ function PlayerManager:skill_dodge_chance(running, crouching, on_zipline, overri
 	--data(self)
 	local chance = data(self, ...)
 	local detection_risk_add_dodge_chance = managers.player:upgrade_value("player", "detection_risk_add_dodge_chance")
+	local vincent_detection_dodge = managers.player:upgrade_value("player", "vincent_detection_dodge")
 	
 	if self:get_value_from_risk_upgrade(detection_risk_add_dodge_chance, detection_risk) == 0.1 then
 		chance = chance + self:upgrade_value("player", "vincent_add_dodge", 0)
 	end
 	
 	if self:has_category_upgrade("player", "vincent_detection_dodge") then
-		if detection_risk <= self:upgrade_value("player", "vincent_detection_dodge")[2] then
-			chance = chance + self:upgrade_value("player", "vincent_detection_dodge")[1]
-		end
+		chance = chance + self:get_value_from_risk_upgrade(vincent_detection_dodge, detection_risk)
 	end
 	
 	return chance

@@ -29,7 +29,22 @@ function UpgradesTweakData:init(tweak_data)
 		
 		self.values.player.passive_concealment_modifier = {3, 5}
 		self.values.player.vincent_add_dodge = {0.02, 0.04}
-		self.values.player.vincent_detection_dodge = {{0.03,10}, {0.06,10}}
+		self.values.player.vincent_detection_dodge = {
+		{
+			0.03, --value
+			1, --step
+			"below",
+			11, --threshold
+			0.03 --cap
+		},
+		{
+			0.06,
+			1,
+			"below",
+			11,
+			0.06
+		}
+	}
 
 		self.values.player.regain_health_from_ammo = {{1,1}, {1,1}}
 		self.values.player.miracle_double_drop = {2}
