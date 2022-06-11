@@ -1,8 +1,8 @@
 local data = AmmoClip._pickup
 local healed = 0
-function AmmoClip:_pickup(unit)
+function AmmoClip:_pickup(unit, ...)
 
-	if data(self, unit) == true then
+	if data(self, unit, ...) == true then
 		local player_manager = managers.player
 		local inventory = unit:inventory()
 	
@@ -33,7 +33,7 @@ function AmmoClip:_pickup(unit)
 			log('[AmmoClip:_pickup] restored: ' .. tostring(restore_value))
 			local damage_ext = unit:character_damage()
 
-			if not damage_ext:need_revive() and not damage_ext:dead(z) and not damage_ext:is_berserker() then
+			if not damage_ext:need_revive() and not damage_ext:dead(z) and not damage_ext:is_berserker() and restore_value > 0 then
 				damage_ext:restore_health(restore_value, true)
 				unit:sound():play("pickup_ammo_health_boost", nil, true)
 			end
@@ -42,7 +42,7 @@ function AmmoClip:_pickup(unit)
 				managers.network:session():send_to_peers_synched("sync_unit_event_id_16", self._unit, "pickup", restore_value)
 			end
 		end
-		return true
+		return data(self, unit, ...)
 	end
-	return false
+	return data(self, unit, ...)
 end

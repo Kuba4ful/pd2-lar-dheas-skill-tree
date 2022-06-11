@@ -134,7 +134,8 @@ function SkillTreeTweakData:init(tweak_data)
 		},
 		[2] = {
 			upgrades = {
-				"player_passive_convert_enemies_health_multiplier_2",
+				"player_denis_convert_health_multiplier_2",
+				"player_denis_convert_damage_multiplier_2"
 				"player_denis_on_convert_bonus_1"
 			},
 			cost = self.costs.pro

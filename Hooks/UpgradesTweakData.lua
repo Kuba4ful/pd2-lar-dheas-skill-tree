@@ -24,8 +24,8 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.convert_enemies_max_minions = {2, 2}
 		self.values.player.denis_max_minions = {1}
 		self.values.player.denis_on_convert_bonus = {{0.5, 2.3, 6}, {0.5, 2.3, 6}} --damage reduction, movement speed, time
-		--self.values.player.passive_convert_enemies_health_multiplier = {0.02, 0.04}
-		self.values.player.passive_convert_enemies_damage_multiplier = {3.5, 4.5}
+		self.values.player.denis_convert_health_multiplier = {0.02, 0.04}
+		self.values.player.denis_convert_damage_multiplier = {3.5, 4.5}
 		
 		self.values.player.passive_concealment_modifier = {3, 5}
 		self.values.player.vincent_add_dodge = {0.02, 0.04}
@@ -176,6 +176,46 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "denis_on_convert_bonus",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_convert_health_multiplier_1 = {
+		name_id = "menu_player_denis_convert_health_multiplier",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "denis_convert_health_multiplier",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_convert_health_multiplier_2 = {
+		name_id = "menu_player_denis_convert_health_multiplier",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "denis_convert_health_multiplier",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_convert_damage_multiplier_1 = {
+		name_id = "menu_player_denis_convert_damage_multiplier",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "denis_convert_damage_multiplier",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_denis_convert_damage_multiplier_2 = {
+		name_id = "menu_player_denis_convert_damage_multiplier",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "denis_convert_damage_multiplier",
 			synced = true,
 			category = "player"
 		}

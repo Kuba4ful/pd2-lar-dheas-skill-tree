@@ -4,7 +4,6 @@ local Net = _G.LuaNetworking
 function GroupAIStateBase:convert_hostage_to_criminal(unit, peer_unit, ...)
 	data(self, unit, peer_unit, ...)
 	if Net:IsHost() or Net:IsMultiplayer() == nil then
-		log('converts')
 		if unit:brain()._logic_data and unit:brain()._logic_data.is_converted then
 		log('is converted')
 			Net:SendToPeers( "denis_on_convert_bonus", "true" )
