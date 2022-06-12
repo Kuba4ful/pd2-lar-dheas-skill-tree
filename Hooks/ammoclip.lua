@@ -1,6 +1,7 @@
 local data = AmmoClip._pickup
 local healed = 0
 function AmmoClip:_pickup(unit, ...)
+	data(self, unit, ...)
 
 	if data(self, unit, ...) == true then
 		local player_manager = managers.player
@@ -42,7 +43,7 @@ function AmmoClip:_pickup(unit, ...)
 				managers.network:session():send_to_peers_synched("sync_unit_event_id_16", self._unit, "pickup", restore_value)
 			end
 		end
-		return data(self, unit, ...)
+		return true
 	end
 	return data(self, unit, ...)
 end
