@@ -26,12 +26,10 @@ I'm always open for pull requests, especially ones that fix bugs/issues or impro
 
 # Current issues and bugs
 
-- Converting cops crashes client on multiplayer
-   (UnitNetworkHandler.mark_minion, mark_minion_original)
-- Disappearing ammo pickups on multiplayer (? Needs more testing)
+- Denis doesn't change converts HP and DMG (copbrain.lua)
 - Non-updated localization
 - Few skills don't function as described
-- Police Badge and Discipline replace vanilla functionality of respectively Optical Illusion and Partners in Crime
+- Police Badge replaces vanilla functionality of respectively Optical Illusion and Partners in Crime
 - The upper-most skill in Police tree is a placeholder
 - Messy code in "ammoclip.lua"
 - Redundant variables
