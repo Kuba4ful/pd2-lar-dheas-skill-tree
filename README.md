@@ -26,7 +26,8 @@ I'm always open for pull requests, especially ones that fix bugs/issues or impro
 
 # Current issues and bugs
 
-- Denis doesn't change converts HP and DMG (copbrain.lua)
+- Denis skill overrides CopBrain:convert_to_criminal, which may cause incompatibilities with other mods
+	(Currently implemented band-aid fix makes it so this function is only overrided when player has this skill aced)
 - Non-updated localization
 - Few skills don't function as described
 - Police Badge replaces vanilla functionality of respectively Optical Illusion and Partners in Crime
