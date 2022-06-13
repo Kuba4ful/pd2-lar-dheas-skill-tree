@@ -40,14 +40,14 @@ function SkillTreeTweakData:init(tweak_data)
 		[1] = { -- Base Skill
 			upgrades = {
 				"player_camouflage_badge_1",
-				"badge_threshold"
+				"player_badge_threshold"
 			},
 			cost = self.costs.default -- the cost 
 		},
 		[2] = { -- Aced skill 
 			upgrades = {
 				"player_camouflage_badge_2",
-				"badge_threshold"
+				"player_badge_threshold"
 			},
 			cost = self.costs.pro -- the cost 
 		}

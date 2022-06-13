@@ -15,8 +15,7 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.badge_threshold = {0.5}
 		self.values.player.camouflage_add_dodge = {0.02, 0.04}
 		
-		self.values.player_bleed_out_health_multiplier = {99999}
-		self.values.player_bleed_out_health_addend = {99999}
+		self.values.player.bleed_out_health_multiplier = {99999}
 		self.values.player.passive_health_multiplier = {1.2}
 		self.values.player.passive_health_index_addend = {116}
 		
