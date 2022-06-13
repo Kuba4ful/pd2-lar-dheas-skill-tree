@@ -23,6 +23,9 @@
 	{ "hook_id" : "lib/managers/group_ai_states/groupaistatebase",
 		"script_path" : "Hooks/groupaistatebase.lua"
 	},
+	{ "hook_id" : "lib/units/beings/player/playermovement",
+		"script_path" : "Hooks/playermovement.lua"
+	},
 	{ "hook_id" : "lib/managers/playermanager",
 		"script_path" : "Hooks/playermanager.lua"
 	}

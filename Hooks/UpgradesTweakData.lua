@@ -11,9 +11,8 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.lmg.reload_speed_multiplier = {1.2, 1.5}
 		self.values.lmg.spread_index_addend = {2,4} 
 		
-		self.values.player.camouflage_bonus = {0.9, 0.8}
-		self.values.player.camouflage_health_ratio_multiplier = {0.8, 0.6}
-	    self.player_camouflage_health_ratio_threshold = {0.5}
+		self.values.player.camouflage_badge = {0.9, 0.8}
+		self.values.player.badge_threshold = {0.5}
 		self.values.player.camouflage_add_dodge = {0.02, 0.04}
 		
 		self.values.player_bleed_out_health_multiplier = {99999}
@@ -80,22 +79,32 @@ function UpgradesTweakData:init(tweak_data)
 			value = 2 -- Value is with value you will take in this case the second "4"
 		}
 	}
-	self.definitions.player_camouflage_bonus_1 = {
-		name_id = "menu_player_camouflage_bonus",
+	self.definitions.player_camouflage_badge_1 = {
+		name_id = "menu_player_camouflage_badge",
 		category = "feature",
 		upgrade = {
 			value = 1,
-			upgrade = "camouflage_bonus",
+			upgrade = "camouflage_badge",
 			synced = true,
 			category = "player"
 		}
 	}
-	self.definitions.player_camouflage_bonus_2 = {
-		name_id = "menu_player_camouflage_bonus",
+	self.definitions.player_badge_threshold = {
+		name_id = "menu_player_badge_threshold",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "badge_threshold",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_camouflage_badge_2 = {
+		name_id = "menu_player_camouflage_badge",
 		category = "feature",
 		upgrade = {
 			value = 2,
-			upgrade = "camouflage_bonus",
+			upgrade = "camouflage_badge",
 			synced = true,
 			category = "player"
 		}

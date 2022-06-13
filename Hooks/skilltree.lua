@@ -39,15 +39,15 @@ function SkillTreeTweakData:init(tweak_data)
 		["icon_xy"] = {10, 9}, -- The icon is the icon atlas {column 0 to N,row 0 to N}
 		[1] = { -- Base Skill
 			upgrades = {
-				"player_camouflage_bonus_1",
-				"camouflage_health_ratio_multiplier"
+				"player_camouflage_badge_1",
+				"badge_threshold"
 			},
 			cost = self.costs.default -- the cost 
 		},
 		[2] = { -- Aced skill 
 			upgrades = {
-				"player_camouflage_bonus_2",
-				"camouflage_health_ratio_multiplier2"
+				"player_camouflage_badge_2",
+				"badge_threshold"
 			},
 			cost = self.costs.pro -- the cost 
 		}

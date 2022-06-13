@@ -4,7 +4,7 @@
     "predator_mentalist_tree":"Police",
     "menu_lmg_accuracy_boost_desc":"BASIC: ##$basic##\nPlaceholder basic ##DZIUGAS##\n\nACED: ##$pro##\nPlaceholder aced ##AAAA POMOCY##",
     "menu_lmg_accuracy_boost":"Skill name"
-    "menu_predator_odznaka_desc":"BASIC: ##$basic##\nYou have a police badge on display. \nYou are ##10%## less likely to be targeted. When your health is below ##50%## this bonus gets doubled and you also gain ##2%## dodge chance.\n\nACED: ##$pro##\nYour badge is one of a higher ranking officer Denis. All of these bonuses get doubled.",
+    "menu_predator_odznaka_desc":"BASIC: ##$basic##\nYou have a police badge on display. \nYou are ##10%## less likely to be targeted. This bonus gets applied twice when you have above ##50%## health.\n\nACED: ##$pro##\nYour badge is one of a higher ranking officer Denis. All of these bonuses get doubled.",
     "menu_predator_odznaka":"Badge"
     "menu_predator_skora_desc":"BASIC: ##$basic##\nYou were born with thick skin... \nWhen your armor is broken you receive ##25%## less damage. \nIf you have any skill/perk that replaces armor with health, this bonus gets reduced to ##15%##.\n\nACED: ##$pro##\n...and you will die with thick skin. \nWhen you're downed you always retain your ability to shoot, unless you get downed by a cloaker. \n(aced doesn't work yet)",
     "menu_predator_skora":"Thick Skin"
