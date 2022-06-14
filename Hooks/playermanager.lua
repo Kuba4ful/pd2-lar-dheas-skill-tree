@@ -1,3 +1,19 @@
+local initself = PlayerManager.init
+function PlayerManager:init(...)
+	initself(self, ...)
+	self._survival_stacks = 0 --reset stacks for adaptation skill
+end
+
+function PlayerManager:set_survival_stacks(stacks)
+	self._survival_stacks = stacks
+end
+
+function PlayerManager:get_survival_stacks()
+	return self._survival_stacks
+end
+
+
+
 local data = PlayerManager.skill_dodge_chance
 
 function PlayerManager:skill_dodge_chance(running, crouching, on_zipline, override_armor, detection_risk, ...)

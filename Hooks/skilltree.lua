@@ -82,28 +82,7 @@ function SkillTreeTweakData:init(tweak_data)
 --       aced = self.costs.hightierpro
 
 
--- PREDATOR SKILL
--- The values of this custom skill are inside the UpgradesTweakData.lua
-	self.skills.predator_lmg_accuracy_boost = {  
-		["name_id"] = "menu_lmg_accuracy_boost",
-		["desc_id"] = "menu_lmg_accuracy_boost_desc",
-		["icon_xy"] = {8, 5},
-		[1] = {
-			upgrades = {
-				"lmg_spread_index_addend" --These are upgrades you can get the upgrade name 
-				                          --from the UpgradesTweakData.lua let's see how the 
-				                          --UpgradesTweakData file works
-				                          --You can add also multiple upgrades
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"aced_lmg_spread_index_addend"
-			},
-			cost = self.costs.pro
-		}
-	}
+-- SKILLS
 	self.skills.predator_skora = {  
 		["name_id"] = "menu_predator_skora",
 		["desc_id"] = "menu_predator_skora_desc",
@@ -180,6 +159,24 @@ function SkillTreeTweakData:init(tweak_data)
 			cost = self.costs.hightierpro
 		}
 	}
+	self.skills.predator_survival = {  
+		["name_id"] = "menu_predator_survival",
+		["desc_id"] = "menu_predator_survival_desc",
+		["icon_xy"] = {8, 5},
+		[1] = {
+			upgrades = {
+				"player_survival_lose_dodge_1",
+				"player_survival_add_dodge_1"
+			},
+			cost = self.costs.default
+		},
+		[2] = {
+			upgrades = {
+				"aced_lmg_spread_index_addend"
+			},
+			cost = self.costs.pro
+		}
+	}
 -- This is for insert our skill tre in main tree
 table.insert(self.trees,{
 			name_id = "predator_mentalist_tree",-- id for localization
@@ -199,7 +196,7 @@ table.insert(self.trees,{
 						"predator_miracle"
 					}, 
 					{ -- this is a modified skill tree row with 3 skills
-						"predator_lmg_accuracy_boost"
+						"predator_survival"
 					} 
 				}
 			})	

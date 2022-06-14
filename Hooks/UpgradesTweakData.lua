@@ -46,38 +46,12 @@ function UpgradesTweakData:init(tweak_data)
 
 		self.values.player.regain_health_from_ammo = {{1,1}, {1,1}}
 		self.values.player.miracle_double_drop = {2}
-		-- self.values is the value vars that contain all the category of weapon boost etc...
-		-- .lmg is the category we are boosting the reload speed of and lmg so it's .lmg id is assault rifle is .assault (...I guess)
-		-- .reload_speed_multiplier is the name of the boost you can check more boost in the source of the original UpgradesTweakData.lua
-		-- .spread_index_addend     is the name of the boost you can check more boost in the source of the original UpgradesTweakData.lua
 		
-		--Later you can play with these values just remove the comment :)
-		--self.values.lmg.fire_rate_multiplier = {1.20,1.4}   
-		--self.values.lmg.damage_addend = {0.5}				 
-		--self.values.lmg.damage_multiplier = {1.20}			 
-		--self.values.lmg.extra_ammo_multiplier = {1.25,1.50}  
+		self.values.player.survival_lose_dodge = {0.05, 0.05}
+		self.values.player.survival_add_dodge = {{0.01, 0.1, 5}, 
+		{0.01, 0.15, 5}} --bonus per step, max bonus, stacks per step
 
-	self.definitions.lmg_spread_index_addend = { 
-	-- lmg_spread_index_addend is name of the definition that the skilltree wil use for get the skill
-	-- Check the line 64 of skilltree.lua ;)
-		category = "feature", -- Info about category will be added in future
-		name_id = "lmg_spread_addend", --Use an id that indify wich weapon are you editing. Info about id will be added in future
-		upgrade = {
-			category = "lmg", -- Like before is the weaponkind
-			upgrade = "spread_index_addend", -- spread_index_addend Is where we apply our value in this case on the accuracy
-			value = 1 -- Value is with value you will take in this case the first "2"
-		}
-	}
-	-- Now you should be abbl
-	self.definitions.aced_lmg_spread_index_addend = {
-		category = "feature",
-		name_id = "lmg_spread_addend",
-		upgrade = {
-			category = "lmg", -- Like before is the weaponkind
-			upgrade = "spread_index_addend",-- spread_index_addend Is where we apply our value in this case on the accuracy
-			value = 2 -- Value is with value you will take in this case the second "4"
-		}
-	}
+	
 	self.definitions.player_camouflage_badge_1 = {
 		name_id = "menu_player_camouflage_badge",
 		category = "feature",
@@ -316,26 +290,41 @@ function UpgradesTweakData:init(tweak_data)
 			category = "player"
 		}
 	}
-	--[[ delete me --
-	self.definitions.lmg_reload_speed = {
+	self.definitions.player_survival_lose_dodge_1 = {
+		name_id = "menu_player_survival_lose_dodge",
 		category = "feature",
-		name_id = "lmg_reload_speed",
 		upgrade = {
-			category = "lmg",
-			upgrade = "reload_speed_multiplier",
-			value = 1
+			value = 1,
+			upgrade = "survival_lose_dodge",
+			category = "player"
 		}
 	}
-	self.definitions.aced_lmg_reload_speed = {
+	self.definitions.player_survival_lose_dodge_2 = {
+		name_id = "menu_player_survival_lose_dodge",
 		category = "feature",
-		name_id = "aced_lmg_reload_speed",
 		upgrade = {
-			category = "lmg",
-			upgrade = "reload_speed_multiplier",
-			value = 2
+			value = 2,
+			upgrade = "survival_lose_dodge",
+			category = "player"
 		}
 	}
-
-	-- delete me :P ]]
+	self.definitions.player_survival_add_dodge_1 = {
+		name_id = "menu_player_survival_add_dodge",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_add_dodge",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_add_dodge_2 = {
+		name_id = "menu_player_survival_add_dodge",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_add_dodge",
+			category = "player"
+		}
+	}
 
 end
