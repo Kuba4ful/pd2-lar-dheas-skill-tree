@@ -30,7 +30,18 @@ function PlayerManager:skill_dodge_chance(running, crouching, on_zipline, overri
 		chance = chance + self:get_value_from_risk_upgrade(vincent_detection_dodge, detection_risk)
 	end
 	
-	return chance
+	if not alive(self:player_unit()) then
+		return chance
+	else
+	
+	if self:has_category_upgrade("player", "badge_dodge") and self:player_unit():character_damage():health_ratio() > 0.6 then
+		log('before badge ' .. tostring(chance))
+		chance = chance + self:upgrade_value("player", "badge_dodge", 0)
+		log('after badge ' .. tostring(chance))
+	end
+		return chance
+	end
+	
 end
 
 local data2 = PlayerManager.check_skills

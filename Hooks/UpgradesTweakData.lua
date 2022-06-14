@@ -13,7 +13,7 @@ function UpgradesTweakData:init(tweak_data)
 		
 		self.values.player.camouflage_badge = {0.9, 0.8}
 		self.values.player.badge_threshold = {0.5}
-		self.values.player.camouflage_add_dodge = {0.02, 0.04}
+		self.values.player.badge_dodge = {0.03, 0.06}
 		
 		self.values.player.bleed_out_health_multiplier = {99999}
 		self.values.player.passive_health_multiplier = {1.2}
@@ -78,6 +78,26 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "camouflage_badge",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_badge_dodge_1 = {
+		name_id = "menu_player_badge_dodge",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "badge_dodge",
+			synced = true,
+			category = "player"
+		}
+	}
+	self.definitions.player_badge_dodge_2 = {
+		name_id = "menu_player_badge_dodge",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "badge_dodge",
 			synced = true,
 			category = "player"
 		}

@@ -1,13 +1,13 @@
 local data = PlayerDamage._on_damage_event
 local Net = _G.LuaNetworking
 
-function PlayerDamage:_on_damage_event(self, ...)
+function PlayerDamage:_on_damage_event(...)
 	data(self, ...)
 	
-	if Net:IsHost() or Net:IsMultiplayer() == nil then
-		Net:SendToPeers( "survival_stack", "true" )
+	--if Net:IsHost() or Net:IsMultiplayer() == nil then
+		--Net:SendToPeers( "survival_stack", "true" )
 		PlayerDamage.survival_stack(self) --use function for host
-	end
+	--end
 
 	
 end
