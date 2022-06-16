@@ -2,6 +2,7 @@ local initself = PlayerManager.init
 function PlayerManager:init(...)
 	initself(self, ...)
 	self._survival_stacks = 0 --reset stacks for adaptation skill
+	self._dodge_stacks = 0 --reset stacks for adaptation skill
 end
 
 function PlayerManager:set_survival_stacks(stacks)
@@ -12,6 +13,13 @@ function PlayerManager:get_survival_stacks()
 	return self._survival_stacks
 end
 
+function PlayerManager:set_dodge_stacks(stacks)
+	self._dodge_stacks = stacks
+end
+
+function PlayerManager:get_dodge_stacks()
+	return self._dodge_stacks
+end
 
 
 local data = PlayerManager.skill_dodge_chance
@@ -32,16 +40,30 @@ function PlayerManager:skill_dodge_chance(running, crouching, on_zipline, overri
 	
 	if not alive(self:player_unit()) then
 		return chance
-	else
+	else -- {
 	
 	if self:has_category_upgrade("player", "badge_dodge") and self:player_unit():character_damage():health_ratio() > 0.6 then
-		log('before badge ' .. tostring(chance))
 		chance = chance + self:upgrade_value("player", "badge_dodge", 0)
-		log('after badge ' .. tostring(chance))
-	end
-		return chance
 	end
 	
+	if self:has_category_upgrade("player", "survival_add_dodge") then
+		chance = chance - self:upgrade_value("player", "survival_lose_dodge")  
+		local stack_bonus = self:upgrade_value("player", "survival_add_dodge")  
+		--bonus per step, max steps, stacks per step
+			-- log('current_survival_stacks ' .. tostring(self:get_survival_stacks()))
+			-- log('[DODGE] dodge_stacks ' .. tostring(self._dodge_stacks))
+		-- if self:get_survival_stacks() % stack_bonus[3] == 0 and self._dodge_stacks <= stack_bonus[2] then
+			-- --local stacks = self:get_dodge_stacks() + 1
+			-- --self:set_dodge_stacks(stacks)
+			-- self._dodge_stacks = self._dodge_stacks + 1
+			-- log('current_dodge_stacks ' .. tostring(self._dodge_stacks))
+		-- end
+		log('chance before ' .. tostring(chance))
+		chance = chance + (stack_bonus[1] * self._dodge_stacks)
+		log('chance after stacks ' .. tostring(chance))
+	end
+	return chance
+	end -- }
 end
 
 local data2 = PlayerManager.check_skills
