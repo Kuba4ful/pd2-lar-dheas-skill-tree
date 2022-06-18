@@ -82,21 +82,25 @@ function PlayerDamage:survival_stack()
 		-- end
 		
 		local dodge_bonus = playerm:upgrade_value("player", "survival_add_dodge", {0,0,0}) 
-		--bonus per step, max bonus, stacks per step
+		--[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
 		
-		if playerm:get_survival_stacks() % dodge_bonus[3] == 0 and playerm._dodge_stacks < dodge_bonus[2] then
-			-- --local stacks = self:get_dodge_stacks() + 1
-			-- --self:set_dodge_stacks(stacks)
+		if playerm:get_survival_stacks() % dodge_bonus[2] == 0 and playerm._dodge_stacks < dodge_bonus[3] then
 			playerm._dodge_stacks = playerm._dodge_stacks + 1
 			log('[DODGE] player dodge stacks ' .. tostring(playerm._dodge_stacks))
 		end
 		
+		local speed_bonus = playerm:upgrade_value("player", "survival_add_speed", {0,0,0}) 
+		--[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
 		
+		if playerm:get_survival_stacks() % speed_bonus[2] == 0 and playerm._speed_stacks < speed_bonus[3] then
+			playerm._speed_stacks = playerm._speed_stacks + 1
+			log('[SPEED] player speed stacks ' .. tostring(playerm._speed_stacks))
+		end
 		
 		local regen_bonus = playerm:upgrade_value("player", "survival_add_regen", {0,0,0}) 
-		--bonus per step, max bonus, stacks per step
+		--[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
 		
-		if playerm:get_survival_stacks() % regen_bonus[3] == 0 and playerm._regen_stacks < regen_bonus[2] then
+		if playerm:get_survival_stacks() % regen_bonus[2] == 0 and playerm._regen_stacks < regen_bonus[3] then
 			playerm._regen_stacks = playerm._regen_stacks + 1
 			log('[REGEN] player regen stacks ' .. tostring(playerm._regen_stacks))
 		end

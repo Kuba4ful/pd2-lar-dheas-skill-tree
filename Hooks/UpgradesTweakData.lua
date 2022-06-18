@@ -48,13 +48,15 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.miracle_double_drop = {2}
 		
 		self.values.player.survival_lose_dodge = {0.05, 0.05}
-		self.values.player.survival_add_dodge = {{0.01, 10, 20}, 
-		{0.01, 15, 20}} --bonus per step, max steps, stacks per step
+		self.values.player.survival_add_dodge = {{0.01, 20, 10}, 
+		{0.01, 20, 15}} --[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
 		
-		
+		self.values.player.survival_lose_speed = {0.1, 0.1}
+		self.values.player.survival_add_speed = {{0.02, 33, 12}, 
+		{0.02, 33, 20}}
 		
 		self.values.player.survival_add_regen = {{0.025, 50, 10}, 
-		{0.025, 50, 10}} --bonus per step, max steps, stacks per step
+		{0.025, 50, 10}}
 
 	
 	self.definitions.player_camouflage_badge_1 = {

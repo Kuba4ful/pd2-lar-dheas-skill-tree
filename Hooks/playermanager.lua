@@ -3,10 +3,11 @@ function PlayerManager:init(...)
 	initself(self, ...)
 	self._survival_stacks = 0 --reset stacks for adaptation skill
 	self._dodge_stacks = 0
-	self._movement_stacks = 0 
+	self._speed_stacks = 0 
 	self._regen_stacks = 0 --the "crit reduction"
 end
 
+--this part here is redundant, will get removed on the next code cleanup
 function PlayerManager:set_survival_stacks(stacks)
 	self._survival_stacks = stacks
 end
@@ -15,13 +16,6 @@ function PlayerManager:get_survival_stacks()
 	return self._survival_stacks
 end
 
-function PlayerManager:set_dodge_stacks(stacks)
-	self._dodge_stacks = stacks
-end
-
-function PlayerManager:get_dodge_stacks()
-	return self._dodge_stacks
-end
 
 
 local data = PlayerManager.skill_dodge_chance
@@ -83,6 +77,14 @@ function PlayerManager:check_skills()
 	end
 end
 
+local orig_function_speed = PlayerManager.movement_speed_multiplier
+function PlayerManager:movement_speed_multiplier(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...)
+	local multiplier = orig_function_speed(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...) * managers.player:upgrade_value("player", "survival_lose_speed", 1)
+	if managers.player:has_category_upgrade("player", "survival_add_speed") and self._speed_stacks > 0 then
+		multiplier = multiplier * (managers.player:upgrade_value("player", "survival_add_speed")[1] * self._speed_stacks)
+	end
+	return multiplier
+end
 --local dataDenis = PlayerManager.chk_minion_limit_reached  --incompatible with other mods 
 														  --as it doesn't call the function back
 														  --add in todo on github
