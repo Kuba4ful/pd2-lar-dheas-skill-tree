@@ -5,14 +5,34 @@ local prev_attack_data = 0
 
 -- Hooks:PostHook( PlayerDamage, "damage_bullet", "damage_bullet_survival_stack", function(self, attack_data)
 function PlayerDamage:damage_bullet(attack_data, ...)
+		
+	
 	data(self, attack_data, ...)
+	if managers.player:has_category_upgrade("player", "survival_add_dodge") then
+	log('attack_data.damage ' .. tostring(attack_data.damage))
 	-- --local damage_received = data(self, attack_data, ...)
 	-- --local my_dodge_roll = data(self, attack_data, ...).dodge_roll
 	if prev_attack_data ~= attack_data.damage and attack_data.damage > 0 then -- dodgy fix for repeated execution
 		prev_attack_data = attack_data.damage
 	-- --if damage_received == 0 and my_dodge_roll ~= nil then
-		log('attack_data.damage  ' .. tostring(attack_data.damage))
-		self:survival_stack()
+		--log('attack_data.damage  ' .. tostring(attack_data.damage))
+		
+		self:survival_stack() -- commented for testing
+		
+		local total_damage = self:_max_armor() + self:_max_health()
+		if managers.player._regen_stacks > 0 and attack_data.damage > total_damage * 0.05 then --damage bigger than 2% of health + armor 
+			log('CRITICAL DAMGE ' .. tostring(attack_data.damage))
+			log('player total_damage ' .. tostring(total_damage))
+			local restore_damage_percent = managers.player:upgrade_value("player", "survival_add_regen")[1] * managers.player._regen_stacks
+			local to_restore = attack_data.damage * restore_damage_percent * 0.1
+			if self:_max_armor() > self:_max_health() * 0.9 then 
+				self:restore_armor(to_restore)
+				log('restored armor ' .. tostring(to_restore) .. '/' .. tostring(self:_max_armor()))
+			else
+				self:restore_health(to_restore, true)
+				log('restored health ' .. tostring(to_restore) .. '/' .. tostring(self:_max_health()))
+			end
+		end
 		-- --log('damage_received  ' .. tostring(damage_received))
 		-- --log('dodge_roll  ' .. tostring(data(self, attack_data, ...).dodge_roll))
 	-- --end
@@ -28,6 +48,7 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 	-- --end
 
 	-- --return damage_received
+	end
  end
 
 local survival_stack_id = "survival_stack"
@@ -68,6 +89,16 @@ function PlayerDamage:survival_stack()
 			-- --self:set_dodge_stacks(stacks)
 			playerm._dodge_stacks = playerm._dodge_stacks + 1
 			log('[DODGE] player dodge stacks ' .. tostring(playerm._dodge_stacks))
+		end
+		
+		
+		
+		local regen_bonus = playerm:upgrade_value("player", "survival_add_regen", {0,0,0}) 
+		--bonus per step, max bonus, stacks per step
+		
+		if playerm:get_survival_stacks() % regen_bonus[3] == 0 and playerm._regen_stacks < regen_bonus[2] then
+			playerm._regen_stacks = playerm._regen_stacks + 1
+			log('[REGEN] player regen stacks ' .. tostring(playerm._regen_stacks))
 		end
 		--if stacks % dodge_bonus[3] == 0 then
 			

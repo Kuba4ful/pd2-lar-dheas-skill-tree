@@ -50,6 +50,11 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.survival_lose_dodge = {0.05, 0.05}
 		self.values.player.survival_add_dodge = {{0.01, 10, 20}, 
 		{0.01, 15, 20}} --bonus per step, max steps, stacks per step
+		
+		
+		
+		self.values.player.survival_add_regen = {{0.025, 50, 10}, 
+		{0.025, 50, 10}} --bonus per step, max steps, stacks per step
 
 	
 	self.definitions.player_camouflage_badge_1 = {
@@ -310,6 +315,7 @@ function UpgradesTweakData:init(tweak_data)
 			category = "player"
 		}
 	}
+	
 	self.definitions.player_survival_lose_dodge_1 = {
 		name_id = "menu_player_survival_lose_dodge",
 		category = "feature",
@@ -343,6 +349,25 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "survival_add_dodge",
+			category = "player"
+		}
+	}
+	
+	self.definitions.player_survival_add_regen_1 = {
+		name_id = "menu_player_survival_add_regen",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_add_regen",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_add_regen_2 = {
+		name_id = "menu_player_survival_add_regen",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_add_regen",
 			category = "player"
 		}
 	}

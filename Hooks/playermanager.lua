@@ -2,7 +2,9 @@ local initself = PlayerManager.init
 function PlayerManager:init(...)
 	initself(self, ...)
 	self._survival_stacks = 0 --reset stacks for adaptation skill
-	self._dodge_stacks = 0 --reset stacks for adaptation skill
+	self._dodge_stacks = 0
+	self._movement_stacks = 0 
+	self._regen_stacks = 0 --the "crit reduction"
 end
 
 function PlayerManager:set_survival_stacks(stacks)
