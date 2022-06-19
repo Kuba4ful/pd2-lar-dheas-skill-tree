@@ -94,6 +94,7 @@ function PlayerDamage:survival_stack()
 		
 		if playerm:get_survival_stacks() % speed_bonus[2] == 0 and playerm._speed_stacks < speed_bonus[3] then
 			playerm._speed_stacks = playerm._speed_stacks + 1
+			--PlayerStandard:_get_max_walk_speed()
 			log('[SPEED] player speed stacks ' .. tostring(playerm._speed_stacks))
 		end
 		

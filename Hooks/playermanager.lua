@@ -78,10 +78,10 @@ function PlayerManager:check_skills()
 end
 
 local orig_function_speed = PlayerManager.movement_speed_multiplier
-function PlayerManager:movement_speed_multiplier(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...)
-	local multiplier = orig_function_speed(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...) * managers.player:upgrade_value("player", "survival_lose_speed", 1)
+function PlayerManager:movement_speed_multiplier(speed_state, bonus_multiplier, upgrade_level, health_ratio, ...)
+	local multiplier = orig_function_speed(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...) - managers.player:upgrade_value("player", "survival_lose_speed", 0)
 	if managers.player:has_category_upgrade("player", "survival_add_speed") and self._speed_stacks > 0 then
-		multiplier = multiplier * (managers.player:upgrade_value("player", "survival_add_speed")[1] * self._speed_stacks)
+		multiplier = multiplier + (managers.player:upgrade_value("player", "survival_add_speed")[1] * self._speed_stacks)
 	end
 	return multiplier
 end

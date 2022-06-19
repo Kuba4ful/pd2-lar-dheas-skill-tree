@@ -52,7 +52,7 @@ function UpgradesTweakData:init(tweak_data)
 		{0.01, 20, 15}} --[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
 		
 		self.values.player.survival_lose_speed = {0.1, 0.1}
-		self.values.player.survival_add_speed = {{0.02, 33, 12}, 
+		self.values.player.survival_add_speed = {{0.02, 33, 15}, 
 		{0.02, 33, 20}}
 		
 		self.values.player.survival_add_regen = {{0.025, 50, 10}, 
@@ -351,6 +351,24 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "survival_add_dodge",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_add_speed_1 = {
+		name_id = "menu_player_survival_add_speed",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_add_speed",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_add_speed_2 = {
+		name_id = "menu_player_survival_add_speed",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_add_speed",
 			category = "player"
 		}
 	}
