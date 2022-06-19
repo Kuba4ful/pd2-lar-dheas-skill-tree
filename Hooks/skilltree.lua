@@ -169,8 +169,10 @@ function SkillTreeTweakData:init(tweak_data)
 			upgrades = {
 				"player_survival_lose_dodge_1",
 				"player_survival_lose_speed_1",
+				"player_survival_lose_reduction_1",
 				"player_survival_add_dodge_1",
 				"player_survival_add_speed_1",
+				"player_survival_add_reduction_1",
 				"player_survival_add_regen_1"
 			},
 			cost = self.costs.default

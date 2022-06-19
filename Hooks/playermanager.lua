@@ -5,6 +5,7 @@ function PlayerManager:init(...)
 	self._dodge_stacks = 0
 	self._speed_stacks = 0 
 	self._regen_stacks = 0 --the "crit reduction"
+	self._reduction_stacks = 0
 end
 
 --this part here is redundant, will get removed on the next code cleanup
@@ -82,6 +83,15 @@ function PlayerManager:movement_speed_multiplier(speed_state, bonus_multiplier, 
 	local multiplier = orig_function_speed(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...) - managers.player:upgrade_value("player", "survival_lose_speed", 0)
 	if managers.player:has_category_upgrade("player", "survival_add_speed") and self._speed_stacks > 0 then
 		multiplier = multiplier + (managers.player:upgrade_value("player", "survival_add_speed")[1] * self._speed_stacks)
+	end
+	return multiplier
+end
+
+local orig_function_reduction = PlayerManager.damage_reduction_skill_multiplier
+function PlayerManager:damage_reduction_skill_multiplier(damage_type, ...)
+	local multiplier = orig_function_reduction(self, damage_type, ...) - managers.player:upgrade_value("player", "survival_lose_reduction", 0)
+	if managers.player:has_category_upgrade("player", "survival_add_reduction") and self._reduction_stacks > 0 then
+		multiplier = multiplier + (managers.player:upgrade_value("player", "survival_add_reduction")[1] * self._reduction_stacks)
 	end
 	return multiplier
 end
