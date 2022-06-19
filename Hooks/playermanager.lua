@@ -6,6 +6,7 @@ function PlayerManager:init(...)
 	self._speed_stacks = 0 
 	self._regen_stacks = 0 --the "crit reduction"
 	self._reduction_stacks = 0
+	self._flashbang_stacks = 0
 end
 
 --this part here is redundant, will get removed on the next code cleanup

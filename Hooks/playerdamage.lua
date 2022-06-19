@@ -32,6 +32,22 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 				self:restore_health(to_restore, true)
 				log('restored health ' .. tostring(to_restore) .. '/' .. tostring(self:_max_health()))
 			end
+			if (managers.player:upgrade_value("player", "survival_add_flashbang")[1] * managers.player._flashbang_stacks) > math.random() then
+				
+			log('[FLASHBANG] THROW CONCUSSION GRENADE ')
+				--code copied from better bots lmao
+				local crim_mov = self._unit:movement()
+				local from_pos = crim_mov:m_head_pos()
+				local look_vec = crim_mov:m_rot():y()
+				
+				local mvec_spread_direction = target_unit:movement():m_head_pos() - from_pos
+				local cc_unit = ProjectileBase.spawn("units/pd2_crimefest_2016/fez1/weapons/wpn_fps_gre_pressure/wpn_third_gre_pressure", from_pos, Rotation())
+				mvec3_norm(mvec_spread_direction)
+				crim_mov:play_redirect("throw_grenade")
+				managers.network:session():send_to_peers("play_distance_interact_redirect", self._unit, "throw_grenade")
+				self._unit:sound():say("g43", true, true)
+				cc_unit:base():throw({ dir = mvec_spread_direction, owner = self._unit })
+			end
 		end
 		-- --log('damage_received  ' .. tostring(damage_received))
 		-- --log('dodge_roll  ' .. tostring(data(self, attack_data, ...).dodge_roll))
@@ -104,6 +120,17 @@ function PlayerDamage:survival_stack()
 		if playerm:get_survival_stacks() % regen_bonus[2] == 0 and playerm._regen_stacks < regen_bonus[3] then
 			playerm._regen_stacks = playerm._regen_stacks + 1
 			log('[REGEN] player regen stacks ' .. tostring(playerm._regen_stacks))
+		end
+		
+		local reduction_bonus = playerm:upgrade_value("player", "survival_add_reduction", {0,0,0}) 
+		if playerm:get_survival_stacks() % reduction_bonus[2] == 0 and playerm._reduction_stacks < reduction_bonus[3] then
+			playerm._reduction_stacks = playerm._reduction_stacks + 1
+			log('[REDUCTION] player reduction stacks ' .. tostring(playerm._reduction_stacks))
+		end
+		
+		local flashbang_bonus = playerm:upgrade_value("player", "survival_add_flashbang", {0,0,0})
+		if playerm:get_survival_stacks() % flashbang_bonus[2] == 0 and playerm._flashbang_stacks < flashbang_bonus[3] then
+			playerm._flashbang_stacks = playerm._flashbang_stacks + 1
 		end
 		--if stacks % dodge_bonus[3] == 0 then
 			

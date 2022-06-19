@@ -61,6 +61,9 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.survival_lose_reduction = {0.04, 0.04}
 		self.values.player.survival_add_reduction = {{0.005, 200, 20}, 
 		{0.005, 200, 30}}
+		
+		self.values.player.survival_add_flashbang = {{0.25, 2, 3}, 
+		{0.25, 2, 4}}
 
 	
 	self.definitions.player_camouflage_badge_1 = {
@@ -410,6 +413,24 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "survival_add_regen",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_add_flashbang_1 = {
+		name_id = "menu_player_survival_add_flashbang",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_add_flashbang",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_add_flashbang_2 = {
+		name_id = "menu_player_survival_add_flashbang",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_add_flashbang",
 			category = "player"
 		}
 	}
