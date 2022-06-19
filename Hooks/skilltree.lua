@@ -173,7 +173,7 @@ function SkillTreeTweakData:init(tweak_data)
 				"player_survival_add_dodge_1",
 				"player_survival_add_speed_1",
 				"player_survival_add_reduction_1",
-				"player_survival_add_regen_1"
+				"player_survival_add_regen_1",
 				"player_survival_add_flashbang_1"
 			},
 			cost = self.costs.default

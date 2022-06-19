@@ -96,6 +96,10 @@ function PlayerManager:damage_reduction_skill_multiplier(damage_type, ...)
 	end
 	return multiplier
 end
+
+function PlayerManager:_on_flashbang_cooldown_end()
+	log('FLASHBANG COOLDOWN END ')
+end
 --local dataDenis = PlayerManager.chk_minion_limit_reached  --incompatible with other mods 
 														  --as it doesn't call the function back
 														  --add in todo on github

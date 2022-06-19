@@ -62,8 +62,8 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.survival_add_reduction = {{0.005, 200, 20}, 
 		{0.005, 200, 30}}
 		
-		self.values.player.survival_add_flashbang = {{0.25, 2, 3}, 
-		{0.25, 2, 4}}
+		self.values.player.survival_add_flashbang = {{25, 2, 5}, 
+		{25, 2, 10}}
 
 	
 	self.definitions.player_camouflage_badge_1 = {
