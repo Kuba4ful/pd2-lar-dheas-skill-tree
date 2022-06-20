@@ -35,6 +35,11 @@ Plans are hard to keep up to, as life likes complicating everything, so it's bes
 
 # Current issues and bugs
 
+- Adaptation skill 
+	- Make concussion grenade spawn on top of player
+	- Check if it grants Cheater tag (doesn't seem so?)
+	- Better implementation for low HP set off (maybe seperate cooldown?)
+	- Possibly make it display on HUD (could cause incompatibilities)
 - Denis skill overrides CopBrain:convert_to_criminal, which may cause incompatibilities with other mods
 	(Currently implemented band-aid fix makes it so this function is only overrided when player has this skill aced)
 - Non-updated localization

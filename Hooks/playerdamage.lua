@@ -32,9 +32,13 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 				self:restore_health(to_restore, true)
 				log('restored health ' .. tostring(to_restore) .. '/' .. tostring(self:_max_health()))
 			end
-			if managers.player._flashbang_stacks > 0 and not managers.player:has_active_timer("flashbang_cooldown") then
-			if math.random() > 0.5 then
-				if self:get_real_health() + self:get_real_armor() < total_damage * 0.2 or self._unit:movement():tased() then
+			
+			
+		end
+		
+		if managers.player._flashbang_stacks > 0 and not managers.player:has_active_timer("flashbang_cooldown") then
+			--if (math.random() > 0.5 and self:get_real_health() + self:get_real_armor() < total_damage * 0.2) or self._unit:movement():tased() then
+			if self._unit:movement():tased() then
 					log('[FLASHBANG] THROW CONCUSSION GRENADE ')
 					
 					--code copied from better bots lmao
@@ -52,11 +56,9 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 					
 					local cooldown = (managers.player:upgrade_value("player", "survival_add_flashbang")[1] - managers.player._flashbang_stacks)
 					managers.player:start_timer("flashbang_cooldown", cooldown) --, managers.player:_on_flashbang_cooldown_end
-				end
+					log('[FLASHBANG] SELF HAS COOLDOWN: ' .. tostring(managers.player:has_active_timer("flashbang_cooldown")))
 			end
 			end
-			
-		end
 		-- --log('damage_received  ' .. tostring(damage_received))
 		-- --log('dodge_roll  ' .. tostring(data(self, attack_data, ...).dodge_roll))
 	-- --end
