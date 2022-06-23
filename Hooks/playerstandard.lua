@@ -8,6 +8,10 @@ Hooks:PostHook(PlayerStandard, "init", "LoadConcussionResource", function(self)
 	-- end	
 	local unit_ids = Idstring("unit")
 	local tweak_entry = tweak_data.blackmarket.projectiles["concussion"]
+					tweak_entry.throw_allowed_expire_t = 0.01
+					tweak_entry.expire_t = 0.01
+					tweak_entry.repeat_expire_t = 0.01
+					tweak_entry.impact_detonation = true
 	local unit_name = Idstring(not Network:is_server() and tweak_entry.local_unit or tweak_entry.unit)
 	local sprint_unit_name = tweak_entry.sprint_unit and Idstring(tweak_entry.sprint_unit)
 

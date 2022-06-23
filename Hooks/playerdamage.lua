@@ -38,7 +38,7 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 		
 		
 	end
-	--if managers.player._flashbang_stacks > 0 and not managers.player:has_active_timer("flashbang_cooldown") then
+	if managers.player._flashbang_stacks > 0 and not managers.player:has_active_timer("flashbang_cooldown") then
 			--if (math.random() > 0.5 and self:get_real_health() + self:get_real_armor() < total_damage * 0.2) or self._unit:movement():tased() then
 			if self._unit:movement():tased() then
 					log('[FLASHBANG] THROW CONCUSSION GRENADE ')
@@ -51,12 +51,14 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 					local target_pos = target_mov:m_pos()
 					
 					local target_dir = target_pos - from_pos
+					local reverse_target_dir = from_pos - target_pos
 					--local look_vec = crim_mov:m_head_rot():y()
 					
 					--local mvec_spread_direction = from_pos
 					--local cc_unit = ProjectileBase.spawn("units/pd2_crimefest_2016/fez1/weapons/wpn_fps_gre_pressure/wpn_third_gre_pressure", head_pos, Rotation())
 					--local cc_unit2 = ProjectileBase.spawn("units/pd2_crimefest_2016/fez1/weapons/wpn_fps_gre_pressure/wpn_third_gre_pressure", player_pos, Rotation())
 					mvector3.normalize(target_dir)
+					mvector3.normalize(reverse_target_dir)
 					--mvector3.normalize(player_pos)
 					--crim_mov:play_redirect("throw_grenade")
 					--managers.network:session():send_to_peers("play_distance_interact_redirect", self._unit, "throw_grenade")
@@ -64,16 +66,23 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 					--cc_unit:base():throw({ dir = from_pos, owner = self._unit })
 					--local throwable = tweak_data.blackmarket.projectiles["concussion"]
 					--if throwable then
+					local throwable = tweak_data.blackmarket.projectiles["concussion"]
+					local message = "throwing concussion grenade"
+					managers.chat:_receive_message(1, managers.localization:to_upper_text("menu_system_message"), message, tweak_data.system_chat_color)
 					ProjectileBase.throw_projectile_npc("concussion", from_pos, target_dir, self._unit)
+					--ProjectileBase.throw_projectile_npc("concussion", from_pos, target_dir, attack_data.attacker_unit)
+					ProjectileBase.throw_projectile_npc("concussion", target_pos, reverse_target_dir, attack_data.attacker_unit)
+					--throwable.expire_t = default_t -- set back to original fuse time
+					--throwable.repeat_expire_t = default_t2
 					--end
 					--cc_unit2:base():throw({ dir = player_pos, owner = self._unit })
 					
-					--local cooldown = (managers.player:upgrade_value("player", "survival_add_flashbang")[1] - managers.player._flashbang_stacks)
-					--managers.player:start_timer("flashbang_cooldown", cooldown) --, managers.player:_on_flashbang_cooldown_end
-					--log('[FLASHBANG] SELF HAS COOLDOWN: ' .. tostring(managers.player:has_active_timer("flashbang_cooldown")))
+					local cooldown = (managers.player:upgrade_value("player", "survival_add_flashbang")[1] - managers.player._flashbang_stacks)
+					managers.player:start_timer("flashbang_cooldown", cooldown) --, managers.player:_on_flashbang_cooldown_end
+					log('[FLASHBANG] SELF HAS COOLDOWN: ' .. tostring(managers.player:has_active_timer("flashbang_cooldown")))
 					end
 			end
-			--end
+		end
 		-- --log('damage_received  ' .. tostring(damage_received))
 		-- --log('dodge_roll  ' .. tostring(data(self, attack_data, ...).dodge_roll))
 	-- --end

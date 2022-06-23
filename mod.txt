@@ -29,8 +29,8 @@
 	{ "hook_id" : "lib/units/beings/player/playerdamage",
 		"script_path" : "Hooks/playerdamage.lua"
 	},
-	{ "hook_id" : "lib/tweak_data/blackmarket/projectilestweakdata",
-		"script_path" : "Hooks/playerdamage.lua"
+	{ "hook_id" : "lib/units/weapons/grenades/concussiongrenade",
+		"script_path" : "Hooks/concussiongrenade.lua"
 	},
     	{
       	"hook_id": "lib/units/beings/player/states/playerstandard",
