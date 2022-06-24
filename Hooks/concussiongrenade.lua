@@ -16,15 +16,34 @@
 	-- end
 -- end
 ConcussionGrenade._PLAYER_FLASH_RANGE = 500
-function ConcussionGrenade:update(unit, t, dt)
-	ConcussionGrenade.super.update(self, unit, t, dt)
+function ConcussionGrenade:update(unit, t, dt, ...)
 	--self._thrower_unit == managers.player:player_unit() and 
-	if (self._thrower_unit == managers.player:player_unit() and self._thrower_unit:movement():tased()) or self._thrower_unit:base()._tweak_table == "taser" then
-		self._timer = nil
+	if self._thrower_unit == managers.player:player_unit() and self._thrower_unit:movement():current_state_name() == "tased" then -- and self._thrower_unit:base()._can_insta_flash == 1 then --self._thrower_unit:base()._tweak_table == "taser" then
+		self._timer = 0
 
-		self:_detonate()
+		--self:_detonate()
 
 		log('it works lmaooooo')
-		return
 	end
+	--end
+	-- elseif self._thrower_unit ~= managers.player:player_unit() then
+		-- self._timer = nil
+
+		-- self:_detonate()
+
+		-- log('it works for taser lmoaooo')
+		-- return
+	
+	-- if self._timer then
+		-- self._timer = self._timer - dt
+
+		-- if self._timer <= 0 then
+			-- self._timer = nil
+
+			-- self:_detonate()
+
+			-- return
+		-- end
+	-- end
+	ConcussionGrenade.super.update(self, unit, t, dt)
 end
