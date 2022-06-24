@@ -3,11 +3,14 @@ local Net = _G.LuaNetworking
 
 function GroupAIStateBase:convert_hostage_to_criminal(unit, peer_unit, ...)
 	data(self, unit, peer_unit, ...)
-	if Net:IsHost() or Net:IsMultiplayer() == nil then
+	
+	if Net:IsHost() or Net:IsMultiplayer() == nil then --only do on host or singleplayer
+	
 		if unit:brain()._logic_data and unit:brain()._logic_data.is_converted then
-			Net:SendToPeers( "denis_on_convert_bonus", "true" )
+			Net:SendToPeers( "denis_on_convert_bonus", "true" ) --host sends to all local players
 			GroupAIStateBase.on_convert(self) --use function for host
 		end
+		
 	end
 
 

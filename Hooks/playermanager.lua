@@ -10,7 +10,7 @@ function PlayerManager:init(...)
 	self._can_insta_flash = 0
 end
 
---this part here is redundant, will get removed on the next code cleanup
+--this part here is redundant, will get removed
 function PlayerManager:set_survival_stacks(stacks)
 	self._survival_stacks = stacks
 end
@@ -46,23 +46,18 @@ function PlayerManager:skill_dodge_chance(running, crouching, on_zipline, overri
 	end
 	
 	if self:has_category_upgrade("player", "survival_add_dodge") then
+	
 		chance = chance - self:upgrade_value("player", "survival_lose_dodge")  
-		local stack_bonus = self:upgrade_value("player", "survival_add_dodge")  
-		--bonus per step, max steps, stacks per step
-			-- log('current_survival_stacks ' .. tostring(self:get_survival_stacks()))
-			-- log('[DODGE] dodge_stacks ' .. tostring(self._dodge_stacks))
-		-- if self:get_survival_stacks() % stack_bonus[3] == 0 and self._dodge_stacks <= stack_bonus[2] then
-			-- --local stacks = self:get_dodge_stacks() + 1
-			-- --self:set_dodge_stacks(stacks)
-			-- self._dodge_stacks = self._dodge_stacks + 1
-			-- log('current_dodge_stacks ' .. tostring(self._dodge_stacks))
-		-- end
-		log('chance before ' .. tostring(chance))
+		local stack_bonus = self:upgrade_value("player", "survival_add_dodge")
+		
 		chance = chance + (stack_bonus[1] * self._dodge_stacks)
-		log('chance after stacks ' .. tostring(chance))
+		
 	end
+	
 	return chance
+	
 	end -- }
+	
 end
 
 local data2 = PlayerManager.check_skills
@@ -82,25 +77,31 @@ end
 
 local orig_function_speed = PlayerManager.movement_speed_multiplier
 function PlayerManager:movement_speed_multiplier(speed_state, bonus_multiplier, upgrade_level, health_ratio, ...)
+
 	local multiplier = orig_function_speed(self, speed_state, bonus_multiplier, upgrade_level, health_ratio, ...) - managers.player:upgrade_value("player", "survival_lose_speed", 0)
+	
 	if managers.player:has_category_upgrade("player", "survival_add_speed") and self._speed_stacks > 0 then
 		multiplier = multiplier + (managers.player:upgrade_value("player", "survival_add_speed")[1] * self._speed_stacks)
 	end
+	
 	return multiplier
 end
 
 local orig_function_reduction = PlayerManager.damage_reduction_skill_multiplier
 function PlayerManager:damage_reduction_skill_multiplier(damage_type, ...)
+
 	local multiplier = orig_function_reduction(self, damage_type, ...) - managers.player:upgrade_value("player", "survival_lose_reduction", 0)
+	
 	if managers.player:has_category_upgrade("player", "survival_add_reduction") and self._reduction_stacks > 0 then
 		multiplier = multiplier + (managers.player:upgrade_value("player", "survival_add_reduction")[1] * self._reduction_stacks)
 	end
+	
 	return multiplier
 end
 
-function PlayerManager:_on_flashbang_cooldown_end()
-	log('FLASHBANG COOLDOWN END ')
-end
+-- function PlayerManager:_on_flashbang_cooldown_end()
+	-- log('FLASHBANG COOLDOWN END ')
+-- end
 --local dataDenis = PlayerManager.chk_minion_limit_reached  --incompatible with other mods 
 														  --as it doesn't call the function back
 														  --add in todo on github

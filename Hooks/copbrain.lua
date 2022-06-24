@@ -14,7 +14,9 @@ function CopBrain:convert_to_criminal(mastermind_criminal, ...)
 	local health_mult = (mastermind_criminal_base:upgrade_value("player", "denis_convert_health_multiplier", 1) or 1)
 	
 	if health_mult ~= 1 then
-		log('copbrain converted' .. tostring(health_mult))
+		--copied from vanilla
+		
+		--log('copbrain converted' .. tostring(health_mult))
 		self._logic_data.is_converted = true
 		self._logic_data.group = nil
 		local mover_col_body = self._unit:body("mover_blocker")
@@ -28,11 +30,11 @@ function CopBrain:convert_to_criminal(mastermind_criminal, ...)
 		
 		--modified code is here
 		local damage_mult = (mastermind_criminal_base:upgrade_value("player", "denis_convert_damage_multiplier", 1) or 1)
-		log('copbrain damage before others' .. tostring(damage_mult))
+		--log('copbrain damage before others' .. tostring(damage_mult))
 
 		damage_mult = damage_mult * (mastermind_criminal_base:upgrade_value("player", "convert_enemies_damage_multiplier", 1) or 1)
 		damage_mult = damage_mult * (mastermind_criminal_base:upgrade_value("player", "passive_convert_enemies_damage_multiplier", 1) or 1)
-		log('copbrain damage after others' .. tostring(damage_mult))
+		--log('copbrain damage after others' .. tostring(damage_mult))
 		
 		if (mastermind_criminal_base:upgrade_value("player", "passive_convert_enemies_health_multiplier", 1) or 1) == 0.01 then
 			health_mult = health_mult - 0.01
@@ -95,8 +97,10 @@ function CopBrain:convert_to_criminal(mastermind_criminal, ...)
 		managers.network:session():send_to_peers_synched("sync_unit_converted", self._unit)
 	
 	else
-		log('copbrain default')
+	
+		--log('copbrain default')
 		data(self, mastermind_criminal, ...)
+		
 	end
 	
 end

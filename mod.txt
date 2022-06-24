@@ -1,8 +1,8 @@
 {
-    "name": "Un Pecado Skill Tree",
-    "description": "seks cekc",
-    "author": "Developed by NastaRego",
-    "contact": "twitch.tv/melod_ja",
+    "name": "More Skill Trees",
+    "description": "Adds new skills to improve build versitality.",
+    "author": "me",
+    "contact": "Kuba4ful#4258",
     "version": "2.1.3.7",
     "blt_version": 2,
     "supermod_definition" : "main.xml",
@@ -29,15 +29,11 @@
 	{ "hook_id" : "lib/units/beings/player/playerdamage",
 		"script_path" : "Hooks/playerdamage.lua"
 	},
-	{ "hook_id" : "lib/tweak_data/blackmarket/projectilestweakdata",
-		"script_path" : "Hooks/playerdamage.lua"
-	},
 	{ "hook_id" : "lib/units/weapons/grenades/concussiongrenade",
 		"script_path" : "Hooks/concussiongrenade.lua"
 	},
-    	{
-      	"hook_id": "lib/units/beings/player/states/playerstandard",
-      	"script_path": "Hooks/playerstandard.lua"
+    	{  "hook_id": "lib/units/beings/player/states/playerstandard",
+      		"script_path": "Hooks/playerstandard.lua"
     	},
 	{ "hook_id" : "lib/managers/playermanager",
 		"script_path" : "Hooks/playermanager.lua"

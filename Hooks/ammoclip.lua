@@ -4,12 +4,14 @@ function AmmoClip:_pickup(unit, ...)
 	--data(self, unit, ...)
 
 	if data(self, unit, ...) == true then
+	
 		local player_manager = managers.player
-		local inventory = unit:inventory()
 	
 		self._picked_up = true
 		local rand = math.random()
+		
 		if player_manager:has_category_upgrade("player", "regain_health_from_ammo") then
+		
 			local restore_value = 0
 			local values = player_manager:upgrade_value("player", "regain_health_from_ammo", 0)
 			
@@ -24,7 +26,7 @@ function AmmoClip:_pickup(unit, ...)
 					healed = healed - 2
 					restore_value = math.random(values[1] + 1, values[2] + 2)
 				else
-					log('invalid operation lmao')
+					log('Invalid operation in ammoclip.lua')
 				end
 				
 			else
@@ -43,8 +45,11 @@ function AmmoClip:_pickup(unit, ...)
 				managers.network:session():send_to_peers_synched("sync_unit_event_id_16", self._unit, "pickup", restore_value)
 			--end
 		end
+		
 		data(self, unit, ...)
+		
 		return true
 	end
+	
 	return data(self, unit, ...)
 end
