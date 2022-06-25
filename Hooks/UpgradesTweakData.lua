@@ -49,21 +49,23 @@ function UpgradesTweakData:init(tweak_data)
 		
 		self.values.player.survival_lose_dodge = {0.05, 0.05}
 		self.values.player.survival_add_dodge = {{0.01, 150, 10}, 
-		{0.01, 50, 15}} --[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
+		{0.01, 150, 15}} --[1] bonus [2] for every nth stack [3] max stacks ([2] * [3])
 		
 		self.values.player.survival_lose_speed = {0.1, 0.1}
 		self.values.player.survival_add_speed = {{0.02, 166, 15}, 
-		{0.02, 66, 20}}
+		{0.02, 166, 20}}
 		
+		self.values.player.survival_lose_health = {0.1, 0.1}
+		self.values.player.survival_lose_armor = {0.15, 0.15}
 		self.values.player.survival_add_regen = {{0.025, 200, 10}, 
-		{0.025, 100, 10}}
+		{0.025, 200, 16}}
 		
 		self.values.player.survival_lose_reduction = {0.04, 0.04}
-		self.values.player.survival_add_reduction = {{0.005, 450, 20}, 
-		{0.005, 200, 30}}
+		self.values.player.survival_add_reduction = {{0.005, 450, 24}, 
+		{0.005, 450, 32}}
 		
 		self.values.player.survival_add_flashbang = {{25, 1000, 5}, 
-		{25, 1000, 10}}
+		{20, 1000, 10}}
 
 	
 	self.definitions.player_camouflage_badge_1 = {
@@ -325,6 +327,42 @@ function UpgradesTweakData:init(tweak_data)
 		}
 	}
 	
+	self.definitions.player_survival_lose_health_1 = {
+		name_id = "menu_player_survival_lose_health",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_lose_health",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_lose_health_2 = {
+		name_id = "menu_player_survival_lose_health",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_lose_health",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_lose_armor_1 = {
+		name_id = "menu_player_survival_lose_armor",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_lose_armor",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_lose_armor_2 = {
+		name_id = "menu_player_survival_lose_armor",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_lose_armor",
+			category = "player"
+		}
+	}
 	self.definitions.player_survival_lose_dodge_1 = {
 		name_id = "menu_player_survival_lose_dodge",
 		category = "feature",
@@ -376,6 +414,24 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "survival_add_speed",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_lose_reduction_1 = {
+		name_id = "menu_player_survival_lose_reduction",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_lose_reduction",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_lose_reduction_2 = {
+		name_id = "menu_player_survival_lose_reduction",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "survival_lose_reduction",
 			category = "player"
 		}
 	}

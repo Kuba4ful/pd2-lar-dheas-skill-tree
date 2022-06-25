@@ -170,6 +170,8 @@ function SkillTreeTweakData:init(tweak_data)
 				"player_survival_lose_dodge_1",
 				"player_survival_lose_speed_1",
 				"player_survival_lose_reduction_1",
+				"player_survival_lose_armor_1",
+				"player_survival_lose_health_1",
 				"player_survival_add_dodge_1",
 				"player_survival_add_speed_1",
 				"player_survival_add_reduction_1",

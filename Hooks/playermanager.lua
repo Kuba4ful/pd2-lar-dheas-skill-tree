@@ -99,6 +99,15 @@ function PlayerManager:damage_reduction_skill_multiplier(damage_type, ...)
 	return multiplier
 end
 
+local orig_function_armor = PlayerManager.body_armor_skill_multiplier
+function PlayerManager:body_armor_skill_multiplier(override_armor, ...)
+	return orig_function_armor(self, override_armor, ...) - managers.player:upgrade_value("player", "survival_lose_armor", 0)
+end
+
+local orig_function_health = PlayerManager.health_skill_multiplier
+function PlayerManager:health_skill_multiplier(...)
+	return orig_function_health(self, ...) - managers.player:upgrade_value("player", "survival_lose_health", 0)
+end
 -- function PlayerManager:_on_flashbang_cooldown_end()
 	-- log('FLASHBANG COOLDOWN END ')
 -- end

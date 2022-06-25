@@ -135,6 +135,20 @@ function PlayerDamage:damage_tase(attack_data, ...)
 	end
 end
 
+local orig_on_downed = PlayerDamage.on_downed --no cloaker check?
+function PlayerDamage:on_downed(...)
+	on_downed(self, ...)
+	local pm = managers.player
+	pm._survival_stacks = 0 --reset stacks for adaptation skill
+	pm._dodge_stacks = 0
+	pm._speed_stacks = 0 
+	pm._regen_stacks = 0 --the "crit reduction"
+	pm._reduction_stacks = 0
+	pm._flashbang_stacks = 0
+	pm._can_insta_flash = 0
+end
+
+
 local survival_stack_id = "survival_stack"
 Hooks:Add("NetworkReceivedData", "NetworkReceivedData_survival_stack", function(sender, id, data)
 
