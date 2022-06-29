@@ -182,7 +182,17 @@ function SkillTreeTweakData:init(tweak_data)
 		},
 		[2] = {
 			upgrades = {
-				"aced_lmg_spread_index_addend"
+				"player_survival_lose_dodge_2",
+				"player_survival_lose_speed_2",
+				"player_survival_lose_reduction_2",
+				"player_survival_lose_armor_2",
+				"player_survival_lose_health_2",
+				"player_survival_add_dodge_2",
+				"player_survival_add_speed_2",
+				"player_survival_add_reduction_2",
+				"player_survival_add_regen_2",
+				"player_survival_add_flashbang_2",
+				"player_survival_cloaker_keep_stacks"
 			},
 			cost = self.costs.pro
 		}

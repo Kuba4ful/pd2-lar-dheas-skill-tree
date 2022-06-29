@@ -8,6 +8,7 @@ function PlayerManager:init(...)
 	self._reduction_stacks = 0
 	self._flashbang_stacks = 0
 	self._can_insta_flash = 0
+	self._survival_cloaker_keep_stacks = 0
 end
 
 --this part here is redundant, will get removed

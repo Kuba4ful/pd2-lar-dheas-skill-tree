@@ -135,10 +135,23 @@ function PlayerDamage:damage_tase(attack_data, ...)
 	end
 end
 
+-- local orig_on_cloaker_down = PlayerDamage.on_incapacitated
+-- function PlayerDamage:on_incapacitated(...)
+	-- -- self:on_downed()
+
+	-- -- self._incapacitated = true
+	-- if managers.player:has_category_upgrade("player", "survival_
+	-- orig_on_cloaker_down(self, ...)
+-- end
+
 local orig_on_downed = PlayerDamage.on_downed --no cloaker check?
 function PlayerDamage:on_downed(...)
 	on_downed(self, ...)
 	local pm = managers.player
+	if pm._survival_cloaker_keep_stacks == 1 then
+		pm._survival_cloaker_keep_stacks = 0
+	else
+	
 	pm._survival_stacks = 0 --reset stacks for adaptation skill
 	pm._dodge_stacks = 0
 	pm._speed_stacks = 0 
@@ -146,6 +159,8 @@ function PlayerDamage:on_downed(...)
 	pm._reduction_stacks = 0
 	pm._flashbang_stacks = 0
 	pm._can_insta_flash = 0
+	
+	end
 end
 
 

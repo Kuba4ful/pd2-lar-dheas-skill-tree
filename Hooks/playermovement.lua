@@ -18,3 +18,10 @@ function PlayerMovement:_apply_attention_setting_modifications(setting, ...)
 		setting.weight_mul = (setting.weight_mul or 1) * managers.player:upgrade_value("player", "camouflage_badge", 1)
 	end
 end
+
+local on_cloaker = PlayerMovement.on_SPOOCed
+function PlayerMovement:on_SPOOCed(enemy_unit, ...)
+	if on_cloaker(self, enemy_unit, ...) and managers.player:has_category_upgrade("player", "survival_cloaker_keep_stacks") then
+		managers.player._survival_cloaker_keep_stacks = 1
+	end
+end

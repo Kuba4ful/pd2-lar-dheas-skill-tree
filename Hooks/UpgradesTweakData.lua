@@ -66,6 +66,8 @@ function UpgradesTweakData:init(tweak_data)
 		
 		self.values.player.survival_add_flashbang = {{25, 1000, 5}, 
 		{20, 1000, 10}}
+		
+		self.values.player.survival_cloaker_keep_stacks = {1}
 
 	
 	self.definitions.player_camouflage_badge_1 = {
@@ -487,6 +489,15 @@ function UpgradesTweakData:init(tweak_data)
 		upgrade = {
 			value = 2,
 			upgrade = "survival_add_flashbang",
+			category = "player"
+		}
+	}
+	self.definitions.player_survival_cloaker_keep_stacks = {
+		name_id = "menu_player_survival_cloaker_keep_stacks",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "survival_cloaker_keep_stacks",
 			category = "player"
 		}
 	}
