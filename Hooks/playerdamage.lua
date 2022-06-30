@@ -146,19 +146,19 @@ end
 
 local orig_on_downed = PlayerDamage.on_downed --no cloaker check?
 function PlayerDamage:on_downed(...)
-	on_downed(self, ...)
+	orig_on_downed(self, ...)
 	local pm = managers.player
 	if pm._survival_cloaker_keep_stacks == 1 then
 		pm._survival_cloaker_keep_stacks = 0
 	else
 	
-	pm._survival_stacks = 0 --reset stacks for adaptation skill
-	pm._dodge_stacks = 0
-	pm._speed_stacks = 0 
-	pm._regen_stacks = 0 --the "crit reduction"
-	pm._reduction_stacks = 0
-	pm._flashbang_stacks = 0
-	pm._can_insta_flash = 0
+		pm._survival_stacks = 1 --1 to avoid bug that gives +1 stack to everything
+		pm._dodge_stacks = 0
+		pm._speed_stacks = 0 
+		pm._regen_stacks = 0 --the "crit reduction"
+		pm._reduction_stacks = 0
+		pm._flashbang_stacks = 0
+		pm._can_insta_flash = 0
 	
 	end
 end

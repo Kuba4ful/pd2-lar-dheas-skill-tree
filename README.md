@@ -36,10 +36,15 @@ Plans are hard to keep up to, as life likes complicating everything, so it's bes
 # Current issues and bugs
 
 - Adaptation skill 
-	- Make concussion grenade spawn on top of player
-	- Check if it grants Cheater tag (doesn't seem so?)
-	- Better implementation for low HP set off (maybe seperate cooldown?)
-	- Possibly make it display on HUD (could cause incompatibilities)
+	- Concussion skill randomly doesn't work?
+		- Played three whole heists single-player. Worked perfectly fine on 2/3. Didn't work on Lab Rats.
+	
+	- Check if it grants the Cheater tag (didn't get it after an one hour long heist, but it still should get tested more)
+	- Reword description to make it take less space but also be easily understood (is it even possible?)
+	- Concussion doesn't get set off when player gets critically wounded. Code is disabled. Is pretty random, doesn't help much and prevents getting set off on more useful occassions (like getting tased). Possible solutions:
+		- Seperate cooldown for critical wounds and tasers.
+		- Remove it completely from description.
+	- Possibly make Stacks and Flashbang Cooldown display on HUD (could cause incompatibilities)
 - Denis skill overrides CopBrain:convert_to_criminal, which may cause incompatibilities with other mods
 	(Currently implemented band-aid fix makes it so this function is only overrided when player has this skill aced)
 - Non-updated localization

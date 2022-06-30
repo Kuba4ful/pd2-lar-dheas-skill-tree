@@ -21,7 +21,11 @@ end
 
 local on_cloaker = PlayerMovement.on_SPOOCed
 function PlayerMovement:on_SPOOCed(enemy_unit, ...)
-	if on_cloaker(self, enemy_unit, ...) and managers.player:has_category_upgrade("player", "survival_cloaker_keep_stacks") then
+	if managers.player:has_category_upgrade("player", "survival_cloaker_keep_stacks") then
 		managers.player._survival_cloaker_keep_stacks = 1
+		local stacks = managers.player:get_survival_stacks()
+		log('stacks after downed cloaker ' .. tostring(stacks))
+		log('cloaker_keep_stacks ' .. tostring(managers.player._survival_cloaker_keep_stacks))
 	end
+	on_cloaker(self, enemy_unit, ...)
 end
