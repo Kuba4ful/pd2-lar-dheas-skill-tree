@@ -64,8 +64,8 @@ function UpgradesTweakData:init(tweak_data)
 		self.values.player.survival_add_reduction = {{0.005, 450, 24}, 
 		{0.005, 450, 32}}
 		
-		self.values.player.survival_add_flashbang = {{25, 1000, 5}, 
-		{20, 1000, 10}}
+		self.values.player.survival_add_flashbang = {{25, 500, 5}, 
+		{20, 2, 10}}
 		
 		self.values.player.survival_cloaker_keep_stacks = {1}
 

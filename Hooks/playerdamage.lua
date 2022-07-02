@@ -20,7 +20,7 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 		self:survival_stack()
 		
 		local total_damage = self:_max_armor() + self:_max_health()
-		if managers.player._regen_stacks > 0 and attack_data.damage > total_damage * 0.05 then --damage bigger than 2% of health + armor 
+		if managers.player._regen_stacks > 0 and attack_data.damage > total_damage * 0.05 then --damage bigger than 5% of health + armor 
 			log('CRITICAL DAMGE ' .. tostring(attack_data.damage))
 			log('player total_damage ' .. tostring(total_damage))
 			local restore_damage_percent = managers.player:upgrade_value("player", "survival_add_regen")[1] * managers.player._regen_stacks
@@ -128,8 +128,16 @@ function PlayerDamage:damage_tase(attack_data, ...)
 			
 			--local message = "throwing concussion grenade"
 			--managers.chat:_receive_message(1, managers.localization:to_upper_text("menu_system_message"), message, tweak_data.system_chat_color)
-			ProjectileBase.throw_projectile_npc("concussion", from_pos, target_dir, self._unit)
-			ProjectileBase.throw_projectile_npc("concussion", target_pos, reverse_target_dir, self._unit)
+			-- ProjectileBase.throw_projectile_npc("concussion", from_pos, target_dir, self._unit)
+			-- ProjectileBase.throw_projectile_npc("concussion", target_pos, reverse_target_dir, self._unit)
+			if Net:IsHost() or Net:IsMultiplayer() == nil then
+				ProjectileBase.throw_projectile_npc("concussion", from_pos, target_dir, self._unit)
+				ProjectileBase.throw_projectile_npc("concussion", target_pos, reverse_target_dir, self._unit)
+			else
+				--local data = { from_pos, target_dir, target_pos, reverse_target_dir }
+				local sent_data = { from_pos:unpack(), target_dir:unpack(), target_pos:unpack(), reverse_target_dir:unpack() }
+				Net:SendToPeer( 1, "ThrowConcussionGrenadeHost", json.encode(sent_data) )
+			end
 			
 		end
 	end
@@ -165,10 +173,22 @@ end
 
 
 local survival_stack_id = "survival_stack"
+local concussion_throw_id = "ThrowConcussionGrenadeHost"
 Hooks:Add("NetworkReceivedData", "NetworkReceivedData_survival_stack", function(sender, id, data)
 
-    if id == survival_stack_id then
-       PlayerDamage.survival_stack(self)
+    -- if id == survival_stack_id then
+       -- PlayerDamage.survival_stack(self)
+    -- end
+	if id == concussion_throw_id then
+
+	   local received_data = json.decode(data)
+	   for i,v in ipairs(received_data) do
+		   received_data[i] = Vector3(v[1], v[2], v[3])
+	   end
+
+	   ProjectileBase.throw_projectile_npc("concussion", received_data[1], received_data[2], PlayerDamage._unit)
+	   log('[Concussion] Thrown by ' .. tostring(sender))
+	   ProjectileBase.throw_projectile_npc("concussion", received_data[3], received_data[4], PlayerDamage._unit)
     end
 
 end)
@@ -228,8 +248,30 @@ function PlayerDamage:survival_stack()
 		local flashbang_bonus = playerm:upgrade_value("player", "survival_add_flashbang", {0,0,0})
 		if playerm:get_survival_stacks() % flashbang_bonus[2] == 0 and playerm._flashbang_stacks < flashbang_bonus[3] then
 			playerm._flashbang_stacks = playerm._flashbang_stacks + 1
+			log('[FLASHBANG] player flashbang stacks ' .. tostring(playerm._flashbang_stacks))
+		end
+
+		--message per 100 stacks
+		if playerm:get_survival_stacks() % 100 == 0 then
+			local message = "Current Adaptation Stacks: " .. tostring(playerm:get_survival_stacks())
+			managers.chat:_receive_message(1, managers.localization:to_upper_text("menu_system_message"), message, tweak_data.system_chat_color)
 		end
 		
+		--show current stacks on hud
+		
+		--if HUDTeammate._stacks_panel is not visible
+		if HUDTeammate._stacks_panel:visible() == false then
+
+			local is_visible = playerm:get_survival_stacks() > 0
+			HUDTeammate._stacks_panel:set_visible(is_visible)
+		end
+
+		function HUDTeammate:_update_stacks_text()
+			if self._stacks_panel then
+				self._stacks_panel:child("stacks"):set_text(tostring(stacks))
+				log('update stacks text')
+			end
+		end
 		
 		playerm:set_survival_stacks(stacks) -- set player stacks to local stacks
 	end
