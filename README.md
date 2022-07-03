@@ -41,6 +41,7 @@ Plans are hard to keep up to, as life likes complicating everything, so it's bes
 	
 	- Check if it grants the Cheater tag (didn't get it after an one hour long heist, but it still should get tested more)
 	- Reword description to make it take less space but also be easily understood (is it even possible?)
+	- Sometimes normal grenades explode instantly when thrown? (not confirmed, needs further testing)
 	- Concussion doesn't get set off when player gets critically wounded. Code is disabled. Is pretty random, doesn't help much and prevents getting set off on more useful occassions (like getting tased). Possible solutions:
 		- Seperate cooldown for critical wounds and tasers.
 		- Remove it completely from description.

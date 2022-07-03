@@ -183,7 +183,7 @@ Hooks:Add("NetworkReceivedData", "NetworkReceivedData_survival_stack", function(
 
 	   local received_data = json.decode(data)
 	   for i,v in ipairs(received_data) do
-		   received_data[i] = Vector3(v[1], v[2], v[3])
+		   received_data[i] = Vector3(v[i], v[i+1], v[i+2])
 	   end
 
 	   ProjectileBase.throw_projectile_npc("concussion", received_data[1], received_data[2], PlayerDamage._unit)
@@ -204,7 +204,7 @@ function PlayerDamage:survival_stack()
 		
 		--add stack
 		stacks = stacks + 1
-		log('stacks ' .. tostring(stacks))
+		--log('stacks ' .. tostring(stacks))
 		
 		--bonus stack for broken armor
 		-- local armor_broken = self:_max_armor() > 0 and self:get_real_armor() <= 0
@@ -251,27 +251,42 @@ function PlayerDamage:survival_stack()
 			log('[FLASHBANG] player flashbang stacks ' .. tostring(playerm._flashbang_stacks))
 		end
 
-		--message per 100 stacks
-		if playerm:get_survival_stacks() % 100 == 0 then
+		--message per 100 
+		--[[ if playerm:get_survival_stacks() % 100 == 0 then
 			local message = "Current Adaptation Stacks: " .. tostring(playerm:get_survival_stacks())
 			managers.chat:_receive_message(1, managers.localization:to_upper_text("menu_system_message"), message, tweak_data.system_chat_color)
-		end
+		end ]]
 		
+		--log per 100 stacks
+		if playerm:get_survival_stacks() % 100 == 0 then
+			log('[ADAPTATION] Player Adaptation Stacks ' .. tostring(playerm:get_survival_stacks()))
+		end
+
 		--show current stacks on hud
 		
 		--if HUDTeammate._stacks_panel is not visible
-		if HUDTeammate._stacks_panel:visible() == false then
-
-			local is_visible = playerm:get_survival_stacks() > 0
-			HUDTeammate._stacks_panel:set_visible(is_visible)
+		--stacks_hud should be _stacks_panel from HUDTeammate:_init_stacks()
+		local stacks_hud = managers.hud._teammate_panels[HUDManager.PLAYER_PANEL]:panel():child("stacks_panel")
+		--local stacks_hud = HUDTeammate:_get_stacks_panel()
+		if stacks_hud == nil then
+			log('stack_hud is nil')
+		else
+		if stacks_hud:visible() == false then
+			local is_visible = stacks > 0
+			stacks_hud:set_visible(is_visible)
 		end
 
-		function HUDTeammate:_update_stacks_text()
-			if self._stacks_panel then
-				self._stacks_panel:child("stacks"):set_text(tostring(stacks))
-				log('update stacks text')
-			end
+		--update stacks text
+		stacks_hud:child("stacks_text"):set_text(tostring(stacks))
 		end
+		--if HUDTeammate._stacks_panel:visible() == false then
+
+		--	local is_visible = playerm:get_survival_stacks() > 0
+		--	HUDTeammate._stacks_panel:set_visible(is_visible)
+	--	end
+		
+		
+		
 		
 		playerm:set_survival_stacks(stacks) -- set player stacks to local stacks
 	end
