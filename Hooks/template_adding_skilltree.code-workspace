@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\..\\Payday-2-LuaJIT-Complete-master\\Payday-2-LuaJIT-Complete-master\\core"
+		},
+		{
+			"path": "..\\..\\..\\Payday-2-LuaJIT-Complete-master\\Payday-2-LuaJIT-Complete-master\\lib"
+		}
+	],
+	"settings": {}
+}

@@ -19,6 +19,16 @@ function PlayerDamage:damage_bullet(attack_data, ...)
 		
 		self:survival_stack()
 		
+		--get player's dodge chance and a random number from 0 to 1
+		--if random number is within the dodge chance range, call self:survival_stack()
+		local skill_dodge_chance = managers.player:skill_dodge_chance(self._unit:movement():running(), self._unit:movement():crouching(), self._unit:movement():zipline_unit())
+		local armor_dodge_chance = managers.player:body_armor_value("dodge")
+		local dodge_chance = skill_dodge_chance + armor_dodge_chance -- doesn't count temporary dodge + sicario dodge because like whatever, who cares
+		local dodge_roll = math.random()
+		if dodge_roll <= dodge_chance then
+			self:survival_stack()
+		end
+
 		local total_damage = self:_max_armor() + self:_max_health()
 		if managers.player._regen_stacks > 0 and attack_data.damage > total_damage * 0.05 then --damage bigger than 5% of health + armor 
 			log('CRITICAL DAMGE ' .. tostring(attack_data.damage))
@@ -277,7 +287,13 @@ function PlayerDamage:survival_stack()
 		end
 
 		--update stacks text
-		stacks_hud:child("stacks_text"):set_text(tostring(stacks))
+		managers.hud._teammate_panels[HUDManager.PLAYER_PANEL]:_update_stacks_text(stacks)
+
+		--[[ stacks_hud:child("stacks_text"):set_text(tostring(stacks))
+		log('text' .. tostring(stacks_hud:child("stacks_text"):text())) ]]
+
+		--stacks_hud:set_text(tostring(stacks))
+		--log('text' .. tostring(stacks_hud:text()))
 		end
 		--if HUDTeammate._stacks_panel:visible() == false then
 
